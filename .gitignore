@@ -10,3 +10,7 @@ mvnw
 .idea/
 
 .mvn/
+
+target/
+
+logging.path_IS_UNDEFINED/
