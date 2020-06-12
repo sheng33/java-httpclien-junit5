@@ -5,7 +5,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication(scanBasePackages = "com.sheng.hrt")
-//@MapperScan("com.sheng.hrt.dao")
 public class HrtApplication {
 
     public static void main(String[] args) {
