@@ -18,3 +18,8 @@ logging:
   config: src/main/resources/logback-spring.xml
   file:
     path: ./logs
+
+mybatis:
+  mapper-locations: classpath*:/mapper/*.xml
+  configuration:
+    use-generated-keys: true
