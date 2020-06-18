@@ -26,8 +26,9 @@ public interface Mapper<T, K> {
      * @param params
      * @return
      */
-    Page queryPageList(Map<String, Object> params);
+    List<T> queryPageList(Map<String, Object> params);
 
+    List<T> selectALL();
     /**
      * 多条件查询（由子类实现）
      * @param params

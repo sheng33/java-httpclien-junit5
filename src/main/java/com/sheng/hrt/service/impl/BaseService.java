@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.lang.reflect.ParameterizedType;
+import java.util.List;
 import java.util.Map;
 
 public class BaseService<T,K> implements IService<T,K> {
@@ -50,9 +51,17 @@ public class BaseService<T,K> implements IService<T,K> {
     @Override
     public Object queryPageList(int pageSize, int pageIndex, Map<String, Object> params) {
         PageHelper.startPage(pageIndex, pageSize);
-        Page page = mapper.queryPageList(params);//Page本身是一个ArrayList对象，转换为json时不会保留分页信息
-        PageInfo pageInfo = page.toPageInfo();//将page转换成pageInfo会保存分页信息返回
-        return new PageModel(pageInfo);
+        List<T> sysMenus = mapper.queryPageList(params);
+        return new PageInfo<T>(sysMenus);
+//        Page page = mapper.queryPageList(params);//Page本身是一个ArrayList对象，转换为json时不会保留分页信息
+//        PageInfo pageInfo = page.toPageInfo();//将page转换成pageInfo会保存分页信息返回
+//        return new PageModel(pageInfo);
+    }
+
+    @Override
+    public List<T> findAll() {
+        System.out.println('a');
+        return mapper.selectALL();
     }
 
     @Override

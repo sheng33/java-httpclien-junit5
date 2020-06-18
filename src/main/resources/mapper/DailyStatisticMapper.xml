@@ -25,6 +25,11 @@
     id, point_id, create_time, issue_amount, consume_amount, commision_amount, register_num, 
     issue_count, issue_people_num, test_name
   </sql>
+  <select id="selectALL" parameterType="com.sheng.hrt.po.DailyStatistic" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from daily_statistic
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     <!--
       WARNING - @mbggenerated

@@ -19,6 +19,11 @@
     -->
     id, create_time, state_change, operator_id, remark
   </sql>
+  <select id="selectALL" parameterType="com.sheng.hrt.po.ChannelLog" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from channel_log
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     <!--
       WARNING - @mbggenerated

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>数据录入</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+</style>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand">
+            <svg t="1592470033533" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1526" width="50" height="50"><path d="M137.24 476.5h748.61v106.94H137.24z" fill="#965353" p-id="1527"></path><path d="M137.24 850.81c0 9.84 7.98 17.83 17.82 17.83s17.83-7.99 17.83-17.83V473.72h-35.65v377.09zM850.21 473.72v377.09c0 9.84 7.99 17.83 17.83 17.83s17.82-7.99 17.82-17.83V473.72h-35.65z" fill="#A85D5D" p-id="1528"></path><path d="M529.37 529.97c0 9.84-7.98 17.83-17.82 17.83s-17.82-7.99-17.82-17.83c0-9.84 7.98-17.82 17.82-17.82s17.82 7.98 17.82 17.82z" fill="#434A54" p-id="1529"></path><path d="M529.37 191.32c0 9.84-7.98 17.82-17.82 17.82s-17.82-7.98-17.82-17.82 7.98-17.82 17.82-17.82 17.82 7.98 17.82 17.82z" p-id="1530"></path><path d="M83.77 405.21h855.56v71.29H83.77z" fill="#FFD2A6" p-id="1531"></path><path d="M351.13 387.39V191.32c0-9.83 7.99-17.82 17.82-17.82h285.2c9.83 0 17.82 7.99 17.82 17.82v196.07H351.13z" fill="#5D9CEC" p-id="1532"></path><path d="M654.15 155.67h-285.2c-19.69 0-35.64 15.97-35.64 35.65v213.89h356.47V191.32c0.01-19.69-15.95-35.65-35.63-35.65z m0 213.89h-285.2V191.32h285.2v178.24z" fill="#CCD1D9" p-id="1533"></path><path d="M707.62 369.56H315.48c-9.84 0-17.82 7.99-17.82 17.83 0 9.84 7.98 17.82 17.82 17.82h392.14c9.84 0 17.82-7.98 17.82-17.82s-7.97-17.83-17.82-17.83z" fill="#E6E9ED" p-id="1534"></path><path d="M507.09 369.56h-66.83l71.29-178.24h66.83z" fill="#FFFFFF" opacity=".1" p-id="1535"></path></svg>
+            数据录入系统
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+
+</body>
+<script type="text/javascript" th:inline="javascript">
+    var message;
+    $(document).ready(function () {
+        $.ajax({
+            url:'/api/application/getAll',
+            type:'get',
+            contentType: 'application/json',
+            async: true,
+            success: function(data){
+                if(data != null){
+                    this.message = data.result;
+                    console.log(this.message)
+                }
+            }
+        });
+    });
+
+</script>
+</html>

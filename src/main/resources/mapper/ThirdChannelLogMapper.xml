@@ -20,6 +20,11 @@
     -->
     id, create_time, state_change, operator_id, remark, test_name
   </sql>
+  <select id="selectALL"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from third_channel_log
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     <!--
       WARNING - @mbggenerated

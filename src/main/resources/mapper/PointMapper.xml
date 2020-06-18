@@ -20,6 +20,11 @@
     -->
     point_id, point_name, point_exchange_rate, create_time, point_code, test_name
   </sql>
+  <select id="selectALL" parameterType="com.sheng.hrt.po.Point" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from point
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     <!--
       WARNING - @mbggenerated

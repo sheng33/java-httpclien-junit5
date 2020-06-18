@@ -28,6 +28,11 @@
     channel_key, point_name, point_exchange_rate, charge_ratio, last_operator_id, channel_status, 
     create_time, test_name
   </sql>
+  <select id="selectALL"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from third_channel
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     <!--
       WARNING - @mbggenerated

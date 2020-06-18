@@ -24,6 +24,11 @@
     channel_id, channel_name, channel_daily_threshold, channel_daily_user_threshold, 
     channel_start_time, channel_end_time, point_id, channel_status, test_name
   </sql>
+  <select id="selectALL" parameterType="com.sheng.hrt.po.Channel" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from channel
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     <!--
       WARNING - @mbggenerated

@@ -56,6 +56,11 @@
     delete from user_point_bill
     where bill_id = #{billId,jdbcType=BIGINT}
   </delete>
+  <select id="selectALL"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user_point_bill
+  </select>
   <insert id="insert" parameterType="com.sheng.hrt.po.UserPointBill" >
     <!--
       WARNING - @mbggenerated

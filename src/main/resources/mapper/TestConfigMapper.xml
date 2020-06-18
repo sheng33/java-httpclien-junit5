@@ -27,6 +27,11 @@
     from testConfig
     where test_id = #{testId,jdbcType=BIGINT}
   </select>
+  <select id="selectALL" parameterType="com.sheng.hrt.po.TestConfig" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from testConfig
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     <!--
       WARNING - @mbggenerated

@@ -1,6 +1,7 @@
-package com.sheng.hrt.controller.Base;
+package com.sheng.hrt.controller.api.Base;
 
 import com.sheng.hrt.until.RtnData;
+import org.springframework.ui.Model;
 
 import java.util.Map;
 
@@ -11,7 +12,7 @@ public abstract class AbstractController<T, K>{
      * @param t
      * @return
      */
-    public abstract RtnData insert(T t);
+    public abstract RtnData insert(T t, Model model);
 
     /**
      * 修改
@@ -38,12 +39,12 @@ public abstract class AbstractController<T, K>{
      * 分页查询
      * @return
      */
-    public abstract RtnData queryPageList(int pageSize, int pageIndex, Map<String,Object> params);
+    public abstract RtnData queryPageList(int pageSize, int pageIndex, Map<String,Object> params, Model model);
 
     /**
      * 多条件查询
      * @return
      */
-    public abstract RtnData queryList(Map<String,Object> params);
+    public abstract RtnData queryList(Map<String,Object> params, Model model);
 
 }

@@ -1,25 +1,29 @@
-package com.sheng.hrt.controller.Base;
+package com.sheng.hrt.controller.api.Base;
 
 import com.sheng.hrt.service.IService;
 import com.sheng.hrt.until.RtnData;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.annotation.Resource;
+import java.util.List;
 import java.util.Map;
 
-public class BaseController<T, K> extends AbstractController<T, K> {
+public class BaseController<T, K> extends com.sheng.hrt.controller.api.Base.AbstractController<T, K> {
 
     @Autowired
     private IService<T, K> service;
 
     @PostMapping("/insert")
     @Override
-    public RtnData insert(@RequestBody T t) {
-        return RtnData.ok(service.insert(t));
+    public RtnData insert(@RequestBody T t, Model model) {
+        Object o = service.insert(t);
+        model.addAttribute(o);
+        return RtnData.ok(o);
+
     }
 
     @PostMapping("/update")
@@ -50,7 +54,15 @@ public class BaseController<T, K> extends AbstractController<T, K> {
 
     @GetMapping("/list")
     @Override
-    public RtnData queryList(@RequestParam Map<String, Object> params) {
+    public RtnData queryList(@RequestParam Map<String, Object> params, Model model) {
+        Object o = service.queryList(params);
+        model.addAttribute(o);
         return RtnData.ok(service.queryList(params));
+    }
+    @GetMapping(value="/getAll")
+    public Object findAll( Model model) {
+        List<T> o = service.findAll();
+        model.addAttribute(o);
+        return RtnData.ok(service.findAll());
     }
 }

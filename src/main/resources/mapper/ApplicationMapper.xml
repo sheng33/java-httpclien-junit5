@@ -25,6 +25,11 @@
     app_id, app_name, app_code, app_subtitle, app_img, app_url, sort, app_status, last_operator_id, 
     test_name
   </sql>
+  <select id="selectALL" parameterType="com.sheng.hrt.po.Application" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from application
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     <!--
       WARNING - @mbggenerated

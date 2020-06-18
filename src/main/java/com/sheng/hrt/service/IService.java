@@ -1,5 +1,6 @@
 package com.sheng.hrt.service;
 
+import java.util.List;
 import java.util.Map;
 
 
@@ -42,6 +43,7 @@ public interface IService<T,K>{
      */
     Object queryPageList(int pageSize, int pageIndex, Map<String, Object> params);
 
+    List<T> findAll();
     /**
      * 条件查询
      * @param params
