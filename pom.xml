@@ -116,11 +116,7 @@
 <!--            <scope>test</scope>-->
         </dependency>
 <!--        html报告生成-->
-        <dependency>
-            <groupId>com.relevantcodes</groupId>
-            <artifactId>extentreports</artifactId>
-            <version>2.41.0</version>
-        </dependency>
+
         <!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
         <dependency>
             <groupId>com.aventstack</groupId>

@@ -1,24 +1,34 @@
 package com.sheng.hrt.until;
 
-import com.relevantcodes.extentreports.ExtentReports;
-import com.relevantcodes.extentreports.ExtentTest;
-import com.relevantcodes.extentreports.LogStatus;
-import com.relevantcodes.extentreports.NetworkMode;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import com.aventstack.extentreports.reporter.configuration.Theme;
 import org.junit.jupiter.api.extension.ExtensionContext;
-import java.util.Optional;
 import org.junit.jupiter.api.extension.TestWatcher;
+
+import java.util.Optional;
 
 /**
  * Created by wangx on 17/9/25.
  * #
  */
 public class ExtentUtils implements TestWatcher {
-    public  ExtentReports extent;
-    String reportPath = "reports/demo/12345.html";
+    static String reportPath = "reports/demo/index.html";
+    private static ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(reportPath);
+    private static ExtentReports extent = new ExtentReports();
+    ExtentTest test = extent.createTest("Banner管理");
     public ExtentUtils() {
-        extent = new ExtentReports(reportPath, true, NetworkMode.OFFLINE);
-        //        String reportPath = "reports/demo/12345.html";
-        //        extent = new ExtentReports(reportPath, true, NetworkMode.OFFLINE);
+        // 设置静态
+        htmlReporter.config().setEncoding("UTF-8");
+        htmlReporter.config().setDocumentTitle("api自动化测试报告");
+        htmlReporter.config().setReportName("api自动化测试报告");
+        htmlReporter.config().setTheme(Theme.STANDARD);
+        htmlReporter.config().setCSS(".node.level-1  ul{ display:none;} .node.level-1.active ul{display:block;}");
+        extent.attachReporter(htmlReporter);
+        extent.setReportUsesManualConfiguration(true);
     }
     @Override
     public void testDisabled(ExtensionContext context, Optional<String> reason) {
@@ -27,9 +37,9 @@ public class ExtentUtils implements TestWatcher {
     @Override
     public void testSuccessful(ExtensionContext context) {
 //        ExtentTest test = extent.startTest(context.getDisplayName(), "-");
-        ExtentTest test  = extent.startTest(context.getDisplayName(),"-");
+        ExtentTest test  = extent.createTest(context.getDisplayName(),"-");
         // step log
-        test.log(LogStatus.PASS, "-");
+        test.log(Status.PASS, "-");
         flushReports(extent, test);
     }
     @Override
@@ -38,18 +48,14 @@ public class ExtentUtils implements TestWatcher {
     }
     @Override
     public void testFailed(ExtensionContext context, Throwable cause) {
-        ExtentTest test  = extent.startTest(context.getDisplayName(),"Test failed");
+        ExtentTest test  = extent.createTest(context.getDisplayName(),"Test failed");
         // step log
-        test.log(LogStatus.FAIL, cause);
+        test.log(Status.FAIL, cause);
 
         flushReports(extent, test);
     }
 
     private void flushReports(ExtentReports extent, ExtentTest test){
-        // ending test
-        extent.endTest(test);
-        // writing everything to document
         extent.flush();
-        extent.close();
     }
 }

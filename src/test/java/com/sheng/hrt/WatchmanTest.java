@@ -13,13 +13,19 @@ public  class WatchmanTest {
 
     @Rule
     public TestWatcher watchman= new TestWatcher() {
-        protected void failed(Description d) {
-            watchedLog+= d + "\n";
+        @Override
+        protected void succeeded(org.junit.runner.Description description) {
+            watchedLog+= description + "\n";
+            System.out.println("ww");
+            super.succeeded(description);
         }
 
-        protected void succeeded(Description d) {
-            watchedLog+= d + " " + "success!\n";
+        @Override
+        protected void failed(Throwable e, org.junit.runner.Description description) {
+            watchedLog+= description + " " + "success!\n";
+            super.failed(e, description);
         }
+
     };
 
     @Test
