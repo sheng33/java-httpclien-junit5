@@ -13,8 +13,6 @@ public class ChannelController  extends BaseController<Channel,Long> {
     @GetMapping("/get")
     @Override
     public RtnData get(Long id) {
-        System.out.printf("1");
-        System.out.printf("id:"+id);
         return super.get(id);
     }
 }

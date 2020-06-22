@@ -18,7 +18,7 @@ SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
--- Table structure for application
+-- Table structure for application-config.properties
 -- ----------------------------
 DROP TABLE IF EXISTS `application`;
 CREATE TABLE `application` (
@@ -36,7 +36,7 @@ CREATE TABLE `application` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='应用表';
 
 -- ----------------------------
--- Records of application
+-- Records of application-config.properties
 -- ----------------------------
 BEGIN;
 INSERT INTO `application` VALUES (1, 'QQ', 'qq', '即使通讯应用', 'http://www.baidu.com', 'http://www.qq.com', 1, 1, 1, '一组');

@@ -44,6 +44,8 @@ public class BaseController<T, K> extends com.sheng.hrt.controller.api.Base.Abst
         return RtnData.ok(service.get(id));
     }
 
+
+
     @GetMapping("/page-list")
     @Override
     public RtnData queryPageList(@RequestParam(required = false, defaultValue = "20") int pageSize,

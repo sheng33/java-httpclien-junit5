@@ -39,7 +39,7 @@ public abstract class AbstractController<T, K>{
      * 分页查询
      * @return
      */
-    public abstract RtnData queryPageList(int pageSize, int pageIndex, Map<String,Object> params, Model model);
+    public abstract RtnData queryPageList(int pageSize, int pageIndex, Map<String,Object> params);
 
     /**
      * 多条件查询
