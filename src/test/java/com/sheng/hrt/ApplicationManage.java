@@ -74,15 +74,15 @@ public class ApplicationManage {
                 "\"appUrl\": \""+appUrl+"\"," +
                 "\"sort\": \""+sort+"\"" +
                 "}";
-        JSONObject jsonObject = sendHttp.postHttp(ApplicationConfig.addApp,headers,param);
+        JSONObject jsonObject = sendHttp.postHttp(ApplicationConfig.updateApp,headers,param);
         Assert.assertEquals(jsonObject.getString("success"),judge);
     }
 
     @DisplayName("状态下拉")
     @Test
-    public void channelStates(){
-        JSONObject jsonObject = sendHttp.getHttp(ThirdChannelConfig.channelStates,headers);
-        System.out.println(jsonObject);
+    public void getPointsStates(){
+        JSONObject jsonObject = sendHttp.getHttp(ApplicationConfig.points,headers);
+
         Assert.assertTrue(jsonObject.getBoolean("success"));
     }
 
@@ -93,7 +93,7 @@ public class ApplicationManage {
             "2,10",
             "0,0"
     })
-    @DisplayName("分页 查询三方渠道")
+    @DisplayName("分页 查询应用")
     public void getlist(String Index,String pageSize){
         params.clear();
         //是否计算总数
@@ -102,32 +102,42 @@ public class ApplicationManage {
         params.put("pageIndex",Index);
         //每页大小
         params.put("pageSize",pageSize);
-        JSONObject jsonObject = sendHttp.getHttp(ThirdChannelConfig.selectChannels,headers,params);
+        JSONObject jsonObject = sendHttp.getHttp(ApplicationConfig.selectApps,headers,params);
         Assert.assertEquals(jsonObject.get("code"),200);
         Assert.assertTrue(jsonObject.getBoolean("success"));
     }
 
-    @DisplayName("禁用 三方渠道")
+    @DisplayName("禁用 应用")
     @CsvSource({"469856733393719296,remark"})
     @ParameterizedTest
     public void updateToOffine(String id,String remark){
         params.clear();
-        params.put("channelId",id);
+        params.put("appId",id);
 //        params.put("remark",remark);
-        JSONObject jsonObject = sendHttp.putHttplj(ThirdChannelConfig.updateToOffline,headers,params);
+        JSONObject jsonObject = sendHttp.putHttplj(ApplicationConfig.updateToOffine,headers,params);
         System.out.println(jsonObject);
         Assert.assertTrue(jsonObject.getBoolean("success"));
     }
 
-    @DisplayName("启用 三方渠道")
+    @DisplayName("启用 应用")
     @CsvSource({"469856733393719296,remark2"})
     @ParameterizedTest
     public void updateToOnline(String id,String remark){
         params.clear();
-        params.put("channelId",id);
+        params.put("appId",id);
 //        params.put("remark",remark);
-        JSONObject jsonObject = sendHttp.putHttplj(ThirdChannelConfig.updateToOnline,headers,params);
+        JSONObject jsonObject = sendHttp.putHttplj(ApplicationConfig.updateToOnline,headers,params);
         System.out.println(jsonObject);
+        Assert.assertTrue(jsonObject.getBoolean("success"));
+    }
+
+    @DisplayName("删除应用")
+    @CsvSource({"469856733393719296,remark2"})
+    @ParameterizedTest
+    public void delApps(String id,String remark){
+        params.clear();
+        params.put("appId",id);
+        JSONObject jsonObject = sendHttp.deleteHttp(ApplicationConfig.delApp,headers,params);
         Assert.assertTrue(jsonObject.getBoolean("success"));
     }
 

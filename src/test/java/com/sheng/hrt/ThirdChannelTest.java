@@ -78,7 +78,7 @@ public class ThirdChannelTest {
                 "\"pointName\": \""+pointName+"\"" +
                 "}";
         JSONObject jsonObject = sendHttp.postHttp(ThirdChannelConfig.GetThirdChannel,headers,param);
-        Assert.assertTrue(jsonObject.getBoolean("success"));
+        Assert.assertEquals(jsonObject.getString("success"),judge);
     }
 
     @DisplayName("状态下拉")

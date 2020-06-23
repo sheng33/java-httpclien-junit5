@@ -20,7 +20,7 @@ public class ApplicationConfig {
     /** 修改应用 PUT
      *
      */
-    public static String updataApp = baseUrl;
+    public static String updateApp = baseUrl;
     /** 删除应用 DELETE
      *
      */
@@ -36,11 +36,11 @@ public class ApplicationConfig {
     /** 下架应用 PUT
      *
      */
-    public static String updataToOffine = baseUrl + "/updataToOffine";
+    public static String updateToOffine = baseUrl + "/updataToOffine";
     /** 上架应用 PUT
      *
      */
-    public static String updataToOnline = baseUrl + "/updataToOnline";
+    public static String updateToOnline = baseUrl + "/updataToOnline";
 
 
 

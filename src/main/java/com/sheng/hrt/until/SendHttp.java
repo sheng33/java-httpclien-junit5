@@ -87,11 +87,10 @@ public class SendHttp {
     public JSONObject postHttp(String url, Map<String,String> headers,Map<String,String> params){
         String baseUrl = HttpRequest.append(url,params);
         HttpRequest httpRequest = HttpRequest
-                .post(url)
+                .post(baseUrl)
                 .headers(headers)
                 .contentType(HttpRequest.CONTENT_TYPE_JSON)
                 .acceptJson();
-
         return getJsonObject(httpRequest);
     };
     public JSONObject postHttp(String url, Map<String,String> headers,String params){
@@ -101,6 +100,24 @@ public class SendHttp {
                 .contentType(HttpRequest.CONTENT_TYPE_JSON)
                 .acceptJson();
         httpRequest.send(params);
+        return getJsonObject(httpRequest);
+    };
+    public JSONObject deleteHttp(String url, Map<String,String> headers,String params){
+        HttpRequest httpRequest = HttpRequest
+                .delete(url)
+                .headers(headers)
+                .contentType(HttpRequest.CONTENT_TYPE_JSON)
+                .acceptJson();
+        httpRequest.send(params);
+        return getJsonObject(httpRequest);
+    };
+    public JSONObject deleteHttp(String url, Map<String,String> headers,Map<String,String> params){
+        String baseUrl = HttpRequest.append(url,params);
+        HttpRequest httpRequest = HttpRequest
+                .post(baseUrl)
+                .headers(headers)
+                .contentType(HttpRequest.CONTENT_TYPE_JSON)
+                .acceptJson();
         return getJsonObject(httpRequest);
     };
 
