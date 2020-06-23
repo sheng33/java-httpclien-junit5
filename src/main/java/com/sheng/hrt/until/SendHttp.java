@@ -54,8 +54,21 @@ public class SendHttp {
 
     public JSONObject putHttp(String url, Map<String,String> headers,Map<String,String> params){
         String baseUrl = HttpRequest.append(url,params);
+        System.out.println(baseUrl);
         HttpRequest httpRequest = HttpRequest
                 .put(baseUrl)
+                .headers(headers)
+                .contentType(HttpRequest.CONTENT_TYPE_JSON)
+                .acceptJson();
+        return getJsonObject(httpRequest);
+    };
+    public JSONObject putHttplj(String url, Map<String,String> headers,Map<String,String> params){
+        StringBuilder baseUrl = new StringBuilder(url);
+        for(String value : params.values()){
+            baseUrl.append(value);
+        }
+        HttpRequest httpRequest = HttpRequest
+                .put(baseUrl.toString())
                 .headers(headers)
                 .contentType(HttpRequest.CONTENT_TYPE_JSON)
                 .acceptJson();

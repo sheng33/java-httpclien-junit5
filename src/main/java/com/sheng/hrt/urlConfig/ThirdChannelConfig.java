@@ -7,7 +7,7 @@ public class ThirdChannelConfig {
     /** 三方渠道根地址
      *
      */
-    public static String baseUrl = BannerConfig.baseUrl+"/manage/thirdChannel";
+    public static String baseUrl = BaseUrlConfig.baseUrl+"/manage/thirdChannel";
     /** 获取单个渠道信息 GET
      *
      */
@@ -31,10 +31,10 @@ public class ThirdChannelConfig {
     /** 禁用 三方渠道 PUT
      *
      */
-    public static String updateToOffline = baseUrl+"/updateToOffline";
+    public static String updateToOffline = baseUrl+"/updateToOffline/";
     /** 启用 三方渠道 PUT
      *
      */
-    public static String updateToOnline = baseUrl+"/updateToOnline";
+    public static String updateToOnline = baseUrl+"/updateToOnline/";
 
 }

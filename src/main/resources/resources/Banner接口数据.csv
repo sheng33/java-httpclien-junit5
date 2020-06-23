@@ -1,6 +1,6 @@
 ﻿type,goalId,bannerName,bannerPic,createTime,id,sort,judge,对应用例
-1,1234567890,Test01,https://carlinx.oss-cn-hangzhou.aliyuncs.com/market/2020/4/28/1588048893595.png,,,3,TRUE,HRT-MD-SRS006-038
-1,1234567890,Test02,https://carlinx.oss-cn-hangzhou.aliyuncs.com/market/2020/4/28/1588048893595.png,,,99,TRUE,HRT-MD-SRS006-039
+1,1234567890,Test11,https://carlinx.oss-cn-hangzhou.aliyuncs.com/market/2020/4/28/1588048893595.png,,,10,TRUE,HRT-MD-SRS006-038
+1,1234567890,Test12,https://carlinx.oss-cn-hangzhou.aliyuncs.com/market/2020/4/28/1588048893595.png,,,89,TRUE,HRT-MD-SRS006-039
 ,1234567890,Test03,https://carlinx.oss-cn-hangzhou.aliyuncs.com/market/2020/4/28/1588048893595.png,,,4,FALSE,HRT-MD-SRS006-042
 1,,Test04,https://carlinx.oss-cn-hangzhou.aliyuncs.com/market/2020/4/28/1588048893595.png,,,5,FALSE,HRT-MD-SRS006-043
 1,1234567890,Test05,,,,6,FALSE,HRT-MD-SRS006-040
@@ -8,4 +8,6 @@
 1,2123@123#2,Test07,https://carlinx.oss-cn-hangzhou.aliyuncs.com/market/2020/4/28/1588048893595.png,,,8,FALSE,HRT-MD-SRS006-044
 1,1234城市12,Test08,https://carlinx.oss-cn-hangzhou.aliyuncs.com/market/2020/4/28/1588048893595.png,,,9,FALSE,HRT-MD-SRS006-044
 2,1234567890,Test09,https://carlinx.oss-cn-hangzhou.aliyuncs.com/market/2020/4/28/1588048893595.png,,,,FALSE,HRT-MD-SRS006-045
-1,1234567890,Test01,https://carlinx.oss-cn-hangzhou.aliyuncs.com/market/2020/4/28/1588048893595.png,,,3,FALSE,HRT-MD-SRS006-046
+1,1234567890,Test01,https://carlinx.oss-cn-hangzhou.aliyuncs.com/market/2020/4/28/1588048893595.png,,,10,FALSE,HRT-MD-SRS006-046
+1,1234567890,Test13,https://carlinx.oss-cn-hangzhou.aliyuncs.com/market/2020/4/28/1588048893595.png,,,-1,FALSE,HRT-MD-SRS006-046
+1,1234567890,Test14,https://carlinx.oss-cn-hangzhou.aliyuncs.com/market/2020/4/28/1588048893595.png,,,100,FALSE,HRT-MD-SRS006-046

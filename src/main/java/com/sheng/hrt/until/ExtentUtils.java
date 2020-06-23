@@ -11,12 +11,9 @@ import org.junit.jupiter.api.extension.TestWatcher;
 
 import java.util.Optional;
 
-/**
- * Created by wangx on 17/9/25.
- * #
- */
+
 public class ExtentUtils implements TestWatcher {
-    static String reportPath = "reports/demo/index.html";
+    static String reportPath = "reports/demo/index2.html";
     private static ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(reportPath);
     private static ExtentReports extent = new ExtentReports();
     ExtentTest test = extent.createTest("Banner管理");
@@ -36,11 +33,10 @@ public class ExtentUtils implements TestWatcher {
     }
     @Override
     public void testSuccessful(ExtensionContext context) {
-//        ExtentTest test = extent.startTest(context.getDisplayName(), "-");
-        ExtentTest test  = extent.createTest(context.getDisplayName(),"-");
+        ExtentTest test1 = test.createNode(context.getDisplayName().toString(),"PA");
         // step log
-        test.log(Status.PASS, "-");
-        flushReports(extent, test);
+        test1.log(Status.PASS, "-");
+        flushReports(extent, test1);
     }
     @Override
     public void testAborted(ExtensionContext context, Throwable cause) {
@@ -48,11 +44,10 @@ public class ExtentUtils implements TestWatcher {
     }
     @Override
     public void testFailed(ExtensionContext context, Throwable cause) {
-        ExtentTest test  = extent.createTest(context.getDisplayName(),"Test failed");
+        ExtentTest test2  = test.createNode(context.getDisplayName(),"Test failed");
         // step log
-        test.log(Status.FAIL, cause);
-
-        flushReports(extent, test);
+        test2.log(Status.FAIL, "-");
+        flushReports(extent, test2);
     }
 
     private void flushReports(ExtentReports extent, ExtentTest test){

@@ -9,7 +9,7 @@ public class BannerConfig {
     /** banner管理根目录
      *
      */
-    public static String baseUrl = BaseUrlConfig.baseUrl+"/manage/banner";
+    public static String baseUrl = BaseUrlConfig.baseUrl+"manage/banner";
     /** 删除按钮 DELETE
      *
      */

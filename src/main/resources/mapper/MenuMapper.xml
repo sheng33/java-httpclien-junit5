@@ -42,11 +42,6 @@
     insert into menu (id, navName)
     values (#{id,jdbcType=INTEGER}, #{navname,jdbcType=VARCHAR})
   </insert>
-  <select id="selectALL" parameterType="com.sheng.hrt.po.Menu" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-     from menu
-  </select>
   <insert id="insertSelective" parameterType="com.sheng.hrt.po.Menu">
     <!--
       WARNING - @mbggenerated
@@ -92,4 +87,9 @@
     set navName = #{navname,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="selectALL" parameterType="com.sheng.hrt.po.Menu" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+     from menu
+  </select>
 </mapper>
