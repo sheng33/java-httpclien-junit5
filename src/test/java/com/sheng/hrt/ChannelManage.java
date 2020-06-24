@@ -10,6 +10,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.HashMap;
@@ -31,6 +32,22 @@ public class ChannelManage {
         JSONObject jsonObject = sendHttp.getHttp(ChannelUrlConfig.getChannel,headers,params);
         Assert.assertEquals(jsonObject.getBoolean("success"),juge);
     }
+    @DisplayName("新增积分渠道")
+    @CsvFileSource(resources = "/resources/渠道表数据.csv",numLinesToSkip = 1)
+    @ParameterizedTest
+    public void addChannel(Boolean judge){
+        JSONObject jsonObject = sendHttp.getHttp(ChannelUrlConfig.addChannel,headers,params);
+        Assert.assertEquals(jsonObject.getBoolean("success"),judge);
+    }
+
+    @DisplayName("修改积分渠道")
+    @CsvFileSource(resources = "/resources/渠道表数据.csv",numLinesToSkip = 1)
+    @ParameterizedTest
+    public void updateChannel(Boolean judge){
+        JSONObject jsonObject = sendHttp.getHttp(ChannelUrlConfig.updataChannel,headers,params);
+        Assert.assertEquals(jsonObject.getBoolean("success"),judge);
+    }
+
 
 
     @DisplayName("状态 下拉")
