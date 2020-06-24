@@ -1,0 +1,3232 @@
+<p><strong>华润通游戏积分系统</strong></p>
+
+<p><strong>简介</strong>：&lt;p&gt;华润通游戏积分系统&lt;/p&gt;</p>
+
+<p><strong>HOST</strong>:192.168.0.19:8084</p>
+
+<p><strong>联系人</strong>:lxstella</p>
+
+<p><strong>Version</strong>:1.0.0</p>
+
+<p><strong>接口路径</strong>：/v2/api-docs?group=车凌</p>
+
+<h1>banner管理 (管理端))</h1>
+
+<h2>删除按钮</h2>
+
+<p><strong>接口描述</strong>:根据按钮ID删除按钮</p>
+
+<p><strong>接口地址</strong>:<code>/manage/banner</code></p>
+
+<p><strong>请求方式</strong>：<code>DELETE</code></p>
+
+<p><strong>consumes</strong>:<code></code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |
+    |bannerId| bannerID  | query | true |integer  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code></code>`json</p>
+
+<p><code></code>`</p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>暂无</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  ||
+    | 204 | No Content  ||
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||</p>
+
+<h2>查找Banner</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/banner/list</code></p>
+
+<p><strong>请求方式</strong>：<code>GET</code></p>
+
+<p><strong>consumes</strong>:<code></code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |
+    |count| 是否计算总数  | query | false |boolean  |    |
+    |pageIndex| 第几页  | query | false |integer  |    |
+    |pageSize| 每页大小  | query | false |integer  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code>json
+    {
+    &quot;pageNum&quot;: 0,
+    &quot;pageSize&quot;: 0,
+    &quot;pages&quot;: 0,
+    &quot;rows&quot;: [
+    {
+    &quot;attribute&quot;: &quot;&quot;,
+    &quot;bannerName&quot;: &quot;&quot;,
+    &quot;bannerPic&quot;: &quot;&quot;,
+    &quot;createTime&quot;: 0,
+    &quot;id&quot;: 0,
+    &quot;sort&quot;: 0,
+    &quot;status&quot;: 0
+    }
+    ],
+    &quot;total&quot;: 0
+    }
+</code></p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | -------------------|-------|----------- |
+    |pageNum|   |integer(int32)  | integer(int32)   |
+    |pageSize|   |integer(int32)  | integer(int32)   |
+    |pages|   |integer(int32)  | integer(int32)   |
+    |rows|   |array  | BannerVO   |
+    |total|   |integer(int64)  | integer(int64)   |</p>
+
+<p><strong>schema属性说明</strong></p>
+
+<p><strong>BannerVO</strong></p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | ------------------|--------|----------- |
+    |attribute | banner属性   |string  |    |
+    |bannerName | banner名称   |string  |    |
+    |bannerPic | banner图片url   |string  |    |
+    |createTime | 创建时间   |integer(int64)  |    |
+    |id | 主键   |integer(int64)  |    |
+    |sort | 排序   |integer(int32)  |    |
+    |status | 状态   |integer(int32)  |    |</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  |PagerList«BannerVO»|
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>修改&amp;更新Banner</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/banner/save</code></p>
+
+<p><strong>请求方式</strong>：<code>POST</code></p>
+
+<p><strong>consumes</strong>:<code>[&quot;application/json&quot;]</code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求示例</strong>：
+    <code>json
+        {
+        &quot;attribute&quot;: &quot;&quot;,
+        &quot;bannerName&quot;: &quot;&quot;,
+        &quot;bannerPic&quot;: &quot;&quot;,
+        &quot;id&quot;: 0,
+        &quot;sort&quot;: 0,
+        &quot;type&quot;: 0
+        }
+    </code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |
+    |bannerDTO| 按钮DTO  | body | true |DTO  | DTO   |</p>
+
+<p><strong>schema属性说明</strong></p>
+
+<p><strong>DTO</strong></p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |attribute| banner属性  | body | false |string  |    |
+    |bannerName| banner名称  | body | false |string  |    |
+    |bannerPic| banner图片url  | body | false |string  |    |
+    |id| 主键  | body | false |integer(int64)  |    |
+    |sort| 排序  | body | false |integer(int32)  |    |
+    |type| 类型  | body | false |integer(int32)  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code></code>`json</p>
+
+<p><code></code>`</p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>暂无</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  ||
+    | 201 | Created  ||
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>获取Banner类型列表</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/banner/types</code></p>
+
+<p><strong>请求方式</strong>：<code>GET</code></p>
+
+<p><strong>consumes</strong>:<code></code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code>json
+    [
+    {
+    &quot;field&quot;: &quot;&quot;,
+    &quot;key&quot;: 0,
+    &quot;value&quot;: [
+    {
+    &quot;key&quot;: &quot;&quot;,
+    &quot;value&quot;: &quot;&quot;
+    }
+    ]
+    }
+    ]
+</code></p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | -------------------|-------|----------- |
+    |field|   |string  |    |
+    |key|   |integer(int32)  | integer(int32)   |
+    |value|   |array  | KeyValue«string,string»   |</p>
+
+<p><strong>schema属性说明</strong></p>
+
+<p><strong>KeyValue«string,string»</strong></p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | ------------------|--------|----------- |
+    |key |    |string  |    |
+    |value |    |string  |    |</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  |KeyFieldValue«int,string,List«KeyValue«string,string»»»|
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>下架 banner</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/banner/updateToOffline/{bannerId}</code></p>
+
+<p><strong>请求方式</strong>：<code>PUT</code></p>
+
+<p><strong>consumes</strong>:<code>[&quot;application/json&quot;]</code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |
+    |bannerId| bannerId  | path | true |integer  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code></code>`json</p>
+
+<p><code></code>`</p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>暂无</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  ||
+    | 201 | Created  ||
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>上架 banner</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/banner/updateToOnline/{bannerId}</code></p>
+
+<p><strong>请求方式</strong>：<code>PUT</code></p>
+
+<p><strong>consumes</strong>:<code>[&quot;application/json&quot;]</code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |
+    |bannerId| bannerId  | path | true |integer  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code></code>`json</p>
+
+<p><code></code>`</p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>暂无</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  ||
+    | 201 | Created  ||
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h1>third-auth-controller</h1>
+
+<h2>三方认证</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/api/third/auth</code></p>
+
+<p><strong>请求方式</strong>：<code>POST</code></p>
+
+<p><strong>consumes</strong>:<code>[&quot;application/json&quot;]</code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求示例</strong>：
+    <code>json
+        {
+        &quot;alias&quot;: &quot;&quot;,
+        &quot;client_id&quot;: &quot;&quot;,
+        &quot;media_source&quot;: &quot;&quot;,
+        &quot;openId&quot;: &quot;&quot;,
+        &quot;platform&quot;: &quot;&quot;,
+        &quot;redirectUrl&quot;: &quot;&quot;,
+        &quot;response_type&quot;: &quot;&quot;,
+        &quot;sign&quot;: &quot;&quot;,
+        &quot;timestamp&quot;: &quot;&quot;,
+        &quot;userInfo&quot;: &quot;&quot;
+        }
+    </code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |
+    |thirdAuthDTO| thirdAuthDTO  | body | true |三方认证DTO  | 三方认证DTO   |</p>
+
+<p><strong>schema属性说明</strong></p>
+
+<p><strong>三方认证DTO</strong></p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |alias|   | body | false |string  |    |
+    |client<em>id|   | body | false |string  |    |
+        |media</em>source|   | body | false |string  |    |
+    |openId|   | body | false |string  |    |
+    |platform|   | body | false |string  |    |
+    |redirectUrl|   | body | false |string  |    |
+    |response_type|   | body | false |string  |    |
+    |sign|   | body | false |string  |    |
+    |timestamp|   | body | false |string  |    |
+    |userInfo|   | body | false |string  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code>json
+    {
+    &quot;applicationContext&quot;: {
+    &quot;applicationName&quot;: &quot;&quot;,
+    &quot;autowireCapableBeanFactory&quot;: {},
+    &quot;beanDefinitionCount&quot;: 0,
+    &quot;beanDefinitionNames&quot;: [],
+    &quot;classLoader&quot;: {
+    &quot;parent&quot;: {
+    &quot;parent&quot;: {}
+    }
+    },
+    &quot;displayName&quot;: &quot;&quot;,
+    &quot;environment&quot;: {
+    &quot;activeProfiles&quot;: [],
+    &quot;defaultProfiles&quot;: []
+    },
+    &quot;id&quot;: &quot;&quot;,
+    &quot;parent&quot;: {},
+    &quot;parentBeanFactory&quot;: {},
+    &quot;startupDate&quot;: 0
+    },
+    &quot;attributesMap&quot;: {},
+    &quot;beanName&quot;: &quot;&quot;,
+    &quot;contentType&quot;: &quot;&quot;,
+    &quot;exposePathVariables&quot;: true,
+    &quot;hosts&quot;: [],
+    &quot;propagateQueryProperties&quot;: true,
+    &quot;redirectView&quot;: true,
+    &quot;requestContextAttribute&quot;: &quot;&quot;,
+    &quot;staticAttributes&quot;: {},
+    &quot;url&quot;: &quot;&quot;
+    }
+</code></p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | -------------------|-------|----------- |
+    |applicationContext|   |ApplicationContext  | ApplicationContext   |
+    |attributesMap|   |object  |    |
+    |beanName|   |string  |    |
+    |contentType|   |string  |    |
+    |exposePathVariables|   |boolean  |    |
+    |hosts|   |array  |    |
+    |propagateQueryProperties|   |boolean  |    |
+    |redirectView|   |boolean  |    |
+    |requestContextAttribute|   |string  |    |
+    |staticAttributes|   |object  |    |
+    |url|   |string  |    |</p>
+
+<p><strong>schema属性说明</strong></p>
+
+<p><strong>ApplicationContext</strong></p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | ------------------|--------|----------- |
+    |applicationName |    |string  |    |
+    |autowireCapableBeanFactory |    |AutowireCapableBeanFactory  | AutowireCapableBeanFactory   |
+    |beanDefinitionCount |    |integer(int32)  |    |
+    |beanDefinitionNames |    |array  |    |
+    |classLoader |    |ClassLoader  | ClassLoader   |
+    |displayName |    |string  |    |
+    |environment |    |Environment  | Environment   |
+    |id |    |string  |    |
+    |parent |    |ApplicationContext  | ApplicationContext   |
+    |parentBeanFactory |    |BeanFactory  | BeanFactory   |
+    |startupDate |    |integer(int64)  |    |</p>
+
+<p><strong>AutowireCapableBeanFactory</strong></p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | ------------------|--------|----------- |</p>
+
+<p><strong>ClassLoader</strong></p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | ------------------|--------|----------- |
+    |parent |    |ClassLoader  | ClassLoader   |</p>
+
+<p><strong>Environment</strong></p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | ------------------|--------|----------- |
+    |activeProfiles |    |array  |    |
+    |defaultProfiles |    |array  |    |</p>
+
+<p><strong>BeanFactory</strong></p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | ------------------|--------|----------- |</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  |RedirectView|
+    | 201 | Created  ||
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h1>三方渠道表 (管理端))</h1>
+
+<h2>获取单个三方渠道信息</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/thirdChannel</code></p>
+
+<p><strong>请求方式</strong>：<code>GET</code></p>
+
+<p><strong>consumes</strong>:<code></code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |
+    |channelId| channelId  | query | true |integer  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code>json
+    {
+    &quot;channelDailyThreshold&quot;: 0,
+    &quot;channelDailyUserThreshold&quot;: 0,
+    &quot;channelId&quot;: 0,
+    &quot;channelKey&quot;: &quot;&quot;,
+    &quot;channelName&quot;: &quot;&quot;,
+    &quot;channelStatus&quot;: 0,
+    &quot;chargeRatio&quot;: 0,
+    &quot;createTime&quot;: 0,
+    &quot;lastOperatorId&quot;: 0,
+    &quot;logs&quot;: [
+    {
+    &quot;channelId&quot;: 0,
+    &quot;createTime&quot;: 0,
+    &quot;id&quot;: 0,
+    &quot;operatorId&quot;: 0,
+    &quot;remark&quot;: &quot;&quot;,
+    &quot;stateChange&quot;: &quot;&quot;
+    }
+    ],
+    &quot;pointExchangeRate&quot;: 0,
+    &quot;pointName&quot;: &quot;&quot;
+    }
+</code></p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | -------------------|-------|----------- |
+    |channelDailyThreshold| 日发放限额  |integer(int64)  | integer(int64)   |
+    |channelDailyUserThreshold| 用户日充值限额  |integer(int64)  | integer(int64)   |
+    |channelId| 渠道id  |integer(int64)  | integer(int64)   |
+    |channelKey| 渠道key  |string  |    |
+    |channelName| 渠道名称  |string  |    |
+    |channelStatus| 渠道状态  |integer(int32)  | integer(int32)   |
+    |chargeRatio| 兑换服务费比例  |integer(int32)  | integer(int32)   |
+    |createTime| 创建时间  |integer(int64)  | integer(int64)   |
+    |lastOperatorId| 最后操作人id  |integer(int64)  | integer(int64)   |
+    |logs| 创建时间  |array  | 三方渠道操作日志表VO   |
+    |pointExchangeRate| 被兑换积分汇率(RMB)  |integer(int32)  | integer(int32)   |
+    |pointName| 被兑换积分名称  |string  |    |</p>
+
+<p><strong>schema属性说明</strong></p>
+
+<p><strong>三方渠道操作日志表VO</strong></p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | ------------------|--------|----------- |
+    |channelId | 渠道id   |integer(int64)  |    |
+    |createTime | 时间   |integer(int64)  |    |
+    |id | 主键   |integer(int64)  |    |
+    |operatorId | 操作人id   |integer(int64)  |    |
+    |remark | 备注   |string  |    |
+    |stateChange | 状态变更   |string  |    |</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  |三方渠道表VO|
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>新增 三方渠道</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/thirdChannel</code></p>
+
+<p><strong>请求方式</strong>：<code>POST</code></p>
+
+<p><strong>consumes</strong>:<code>[&quot;application/json&quot;]</code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求示例</strong>：
+    <code>json
+        {
+        &quot;channelDailyThreshold&quot;: 0,
+        &quot;channelDailyUserThreshold&quot;: 0,
+        &quot;channelId&quot;: 0,
+        &quot;channelName&quot;: &quot;&quot;,
+        &quot;chargeRatio&quot;: 0,
+        &quot;pointExchangeRate&quot;: 0,
+        &quot;pointName&quot;: &quot;&quot;
+        }
+    </code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |
+    |thirdChannelDTO| thirdChannelDTO  | body | true |三方渠道表DTO  | 三方渠道表DTO   |</p>
+
+<p><strong>schema属性说明</strong></p>
+
+<p><strong>三方渠道表DTO</strong></p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |channelDailyThreshold| 日发放限额  | body | false |integer(int64)  |    |
+    |channelDailyUserThreshold| 用户日充值限额  | body | false |integer(int64)  |    |
+    |channelId| 渠道id  | body | false |integer(int64)  |    |
+    |channelName| 渠道名称  | body | false |string  |    |
+    |chargeRatio| 兑换服务费比例  | body | false |integer(int32)  |    |
+    |pointExchangeRate| 被兑换积分汇率(RMB)  | body | false |integer(int32)  |    |
+    |pointName| 被兑换积分名称  | body | false |string  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code></code>`json</p>
+
+<p><code></code>`</p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>暂无</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  ||
+    | 201 | Created  ||
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>修改 三方渠道</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/thirdChannel</code></p>
+
+<p><strong>请求方式</strong>：<code>PUT</code></p>
+
+<p><strong>consumes</strong>:<code>[&quot;application/json&quot;]</code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求示例</strong>：
+    <code>json
+        {
+        &quot;channelDailyThreshold&quot;: 0,
+        &quot;channelDailyUserThreshold&quot;: 0,
+        &quot;channelId&quot;: 0,
+        &quot;channelName&quot;: &quot;&quot;,
+        &quot;chargeRatio&quot;: 0,
+        &quot;pointExchangeRate&quot;: 0,
+        &quot;pointName&quot;: &quot;&quot;
+        }
+    </code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |
+    |thirdChannelDTO| thirdChannelDTO  | body | true |三方渠道表DTO  | 三方渠道表DTO   |</p>
+
+<p><strong>schema属性说明</strong></p>
+
+<p><strong>三方渠道表DTO</strong></p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |channelDailyThreshold| 日发放限额  | body | false |integer(int64)  |    |
+    |channelDailyUserThreshold| 用户日充值限额  | body | false |integer(int64)  |    |
+    |channelId| 渠道id  | body | false |integer(int64)  |    |
+    |channelName| 渠道名称  | body | false |string  |    |
+    |chargeRatio| 兑换服务费比例  | body | false |integer(int32)  |    |
+    |pointExchangeRate| 被兑换积分汇率(RMB)  | body | false |integer(int32)  |    |
+    |pointName| 被兑换积分名称  | body | false |string  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code></code>`json</p>
+
+<p><code></code>`</p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>暂无</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  ||
+    | 201 | Created  ||
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>状态 下拉</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/thirdChannel/channelStates</code></p>
+
+<p><strong>请求方式</strong>：<code>GET</code></p>
+
+<p><strong>consumes</strong>:<code></code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code></code>`json</p>
+
+<p><code></code>`</p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>暂无</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  ||
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>分页 查询三方渠道</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/thirdChannel/selectChannels</code></p>
+
+<p><strong>请求方式</strong>：<code>GET</code></p>
+
+<p><strong>consumes</strong>:<code></code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |
+    |count| 是否计算总数  | query | false |boolean  |    |
+    |pageIndex| 第几页  | query | false |integer  |    |
+    |pageSize| 每页大小  | query | false |integer  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code>json
+    {
+    &quot;pageNum&quot;: 0,
+    &quot;pageSize&quot;: 0,
+    &quot;pages&quot;: 0,
+    &quot;rows&quot;: [
+    {
+    &quot;channelDailyThreshold&quot;: 0,
+    &quot;channelDailyUserThreshold&quot;: 0,
+    &quot;channelId&quot;: 0,
+    &quot;channelKey&quot;: &quot;&quot;,
+    &quot;channelName&quot;: &quot;&quot;,
+    &quot;channelStatus&quot;: 0,
+    &quot;chargeRatio&quot;: 0,
+    &quot;createTime&quot;: 0,
+    &quot;lastOperatorId&quot;: 0,
+    &quot;logs&quot;: [
+    {
+    &quot;channelId&quot;: 0,
+    &quot;createTime&quot;: 0,
+    &quot;id&quot;: 0,
+    &quot;operatorId&quot;: 0,
+    &quot;remark&quot;: &quot;&quot;,
+    &quot;stateChange&quot;: &quot;&quot;
+    }
+    ],
+    &quot;pointExchangeRate&quot;: 0,
+    &quot;pointName&quot;: &quot;&quot;
+    }
+    ],
+    &quot;total&quot;: 0
+    }
+</code></p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | -------------------|-------|----------- |
+    |pageNum|   |integer(int32)  | integer(int32)   |
+    |pageSize|   |integer(int32)  | integer(int32)   |
+    |pages|   |integer(int32)  | integer(int32)   |
+    |rows|   |array  | 三方渠道表VO   |
+    |total|   |integer(int64)  | integer(int64)   |</p>
+
+<p><strong>schema属性说明</strong></p>
+
+<p><strong>三方渠道表VO</strong></p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | ------------------|--------|----------- |
+    |channelDailyThreshold | 日发放限额   |integer(int64)  |    |
+    |channelDailyUserThreshold | 用户日充值限额   |integer(int64)  |    |
+    |channelId | 渠道id   |integer(int64)  |    |
+    |channelKey | 渠道key   |string  |    |
+    |channelName | 渠道名称   |string  |    |
+    |channelStatus | 渠道状态   |integer(int32)  |    |
+    |chargeRatio | 兑换服务费比例   |integer(int32)  |    |
+    |createTime | 创建时间   |integer(int64)  |    |
+    |lastOperatorId | 最后操作人id   |integer(int64)  |    |
+    |logs | 创建时间   |array  | 三方渠道操作日志表VO   |
+    |pointExchangeRate | 被兑换积分汇率(RMB)   |integer(int32)  |    |
+    |pointName | 被兑换积分名称   |string  |    |</p>
+
+<p><strong>三方渠道操作日志表VO</strong></p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | ------------------|--------|----------- |
+    |channelId | 渠道id   |integer(int64)  |    |
+    |createTime | 时间   |integer(int64)  |    |
+    |id | 主键   |integer(int64)  |    |
+    |operatorId | 操作人id   |integer(int64)  |    |
+    |remark | 备注   |string  |    |
+    |stateChange | 状态变更   |string  |    |</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  |PagerList«三方渠道表VO»|
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>禁用 三方渠道</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/thirdChannel/updateToOffline/{channelId}</code></p>
+
+<p><strong>请求方式</strong>：<code>PUT</code></p>
+
+<p><strong>consumes</strong>:<code>[&quot;application/json&quot;]</code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |
+    |channelId| channelId  | path | true |integer  |    |
+    |remark| remark  | query | false |string  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code></code>`json</p>
+
+<p><code></code>`</p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>暂无</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  ||
+    | 201 | Created  ||
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>启用 三方渠道</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/thirdChannel/updateToOnline/{channelId}</code></p>
+
+<p><strong>请求方式</strong>：<code>PUT</code></p>
+
+<p><strong>consumes</strong>:<code>[&quot;application/json&quot;]</code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |
+    |channelId| channelId  | path | true |integer  |    |
+    |remark| remark  | query | false |string  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code></code>`json</p>
+
+<p><code></code>`</p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>暂无</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  ||
+    | 201 | Created  ||
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h1>应用管理 (管理端))</h1>
+
+<h2>获取单个应用信息</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/application</code></p>
+
+<p><strong>请求方式</strong>：<code>GET</code></p>
+
+<p><strong>consumes</strong>:<code></code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |appId| appId  | query | true |integer  |    |
+    |authorization| token  | header | false |string  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code>json
+    {
+    &quot;appCode&quot;: &quot;&quot;,
+    &quot;appId&quot;: 0,
+    &quot;appImg&quot;: &quot;&quot;,
+    &quot;appName&quot;: &quot;&quot;,
+    &quot;appStatus&quot;: 0,
+    &quot;appSubtitle&quot;: &quot;&quot;,
+    &quot;appUrl&quot;: &quot;&quot;,
+    &quot;lastOperatorId&quot;: 0,
+    &quot;logs&quot;: [
+    {
+    &quot;applicationId&quot;: 0,
+    &quot;createTime&quot;: 0,
+    &quot;id&quot;: 0,
+    &quot;operatorId&quot;: 0,
+    &quot;remark&quot;: &quot;&quot;,
+    &quot;stateChange&quot;: &quot;&quot;
+    }
+    ],
+    &quot;sort&quot;: 0
+    }
+</code></p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | -------------------|-------|----------- |
+    |appCode| 应用code  |string  |    |
+    |appId| 应用id(主键)  |integer(int64)  | integer(int64)   |
+    |appImg| 应用图片  |string  |    |
+    |appName| 应用名称  |string  |    |
+    |appStatus| 状态  |integer(int32)  | integer(int32)   |
+    |appSubtitle| 应用副标题  |string  |    |
+    |appUrl| 应用启动链接  |string  |    |
+    |lastOperatorId| 最后操作人  |integer(int64)  | integer(int64)   |
+    |logs| 日志  |array  | VO   |
+    |sort| 排序字段  |integer(int32)  | integer(int32)   |</p>
+
+<p><strong>schema属性说明</strong></p>
+
+<p><strong>VO</strong></p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | ------------------|--------|----------- |
+    |applicationId | 应用id   |integer(int64)  |    |
+    |createTime | 时间   |integer(int64)  |    |
+    |id | 主键   |integer(int64)  |    |
+    |operatorId | 操作人id   |integer(int64)  |    |
+    |remark | 备注   |string  |    |
+    |stateChange | 状态变更   |string  |    |</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  |应用表VO|
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>新增 应用</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/application</code></p>
+
+<p><strong>请求方式</strong>：<code>POST</code></p>
+
+<p><strong>consumes</strong>:<code>[&quot;application/json&quot;]</code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求示例</strong>：
+    <code>json
+        {
+        &quot;appCode&quot;: &quot;&quot;,
+        &quot;appId&quot;: 0,
+        &quot;appImg&quot;: &quot;&quot;,
+        &quot;appName&quot;: &quot;&quot;,
+        &quot;appStatus&quot;: 0,
+        &quot;appSubtitle&quot;: &quot;&quot;,
+        &quot;appUrl&quot;: &quot;&quot;,
+        &quot;sort&quot;: 0
+        }
+    </code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |applicationDTO| applicationDTO  | body | true |应用表DTO  | 应用表DTO   |
+    |authorization| token  | header | false |string  |    |</p>
+
+<p><strong>schema属性说明</strong></p>
+
+<p><strong>应用表DTO</strong></p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |appCode| 应用code  | body | false |string  |    |
+    |appId| 应用id(主键)  | body | false |integer(int64)  |    |
+    |appImg| 应用图片  | body | false |string  |    |
+    |appName| 应用名称  | body | false |string  |    |
+    |appStatus| 状态  | body | false |integer(int32)  |    |
+    |appSubtitle| 应用副标题  | body | false |string  |    |
+    |appUrl| 应用启动链接  | body | false |string  |    |
+    |sort| 排序字段  | body | false |integer(int32)  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code></code>`json</p>
+
+<p><code></code>`</p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>暂无</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  ||
+    | 201 | Created  ||
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>修改 应用</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/application</code></p>
+
+<p><strong>请求方式</strong>：<code>PUT</code></p>
+
+<p><strong>consumes</strong>:<code>[&quot;application/json&quot;]</code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求示例</strong>：
+    <code>json
+        {
+        &quot;appCode&quot;: &quot;&quot;,
+        &quot;appId&quot;: 0,
+        &quot;appImg&quot;: &quot;&quot;,
+        &quot;appName&quot;: &quot;&quot;,
+        &quot;appStatus&quot;: 0,
+        &quot;appSubtitle&quot;: &quot;&quot;,
+        &quot;appUrl&quot;: &quot;&quot;,
+        &quot;sort&quot;: 0
+        }
+    </code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |applicationDTO| applicationDTO  | body | true |应用表DTO  | 应用表DTO   |
+    |authorization| token  | header | false |string  |    |</p>
+
+<p><strong>schema属性说明</strong></p>
+
+<p><strong>应用表DTO</strong></p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |appCode| 应用code  | body | false |string  |    |
+    |appId| 应用id(主键)  | body | false |integer(int64)  |    |
+    |appImg| 应用图片  | body | false |string  |    |
+    |appName| 应用名称  | body | false |string  |    |
+    |appStatus| 状态  | body | false |integer(int32)  |    |
+    |appSubtitle| 应用副标题  | body | false |string  |    |
+    |appUrl| 应用启动链接  | body | false |string  |    |
+    |sort| 排序字段  | body | false |integer(int32)  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code></code>`json</p>
+
+<p><code></code>`</p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>暂无</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  ||
+    | 201 | Created  ||
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>删除应用</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/application</code></p>
+
+<p><strong>请求方式</strong>：<code>DELETE</code></p>
+
+<p><strong>consumes</strong>:<code></code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |appId| appId  | query | true |integer  |    |
+    |authorization| token  | header | false |string  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code></code>`json</p>
+
+<p><code></code>`</p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>暂无</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  ||
+    | 204 | No Content  ||
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||</p>
+
+<h2>分页 查询应用</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/application/selectApps</code></p>
+
+<p><strong>请求方式</strong>：<code>GET</code></p>
+
+<p><strong>consumes</strong>:<code></code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |
+    |count| 是否计算总数  | query | false |boolean  |    |
+    |pageIndex| 第几页  | query | false |integer  |    |
+    |pageSize| 每页大小  | query | false |integer  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code>json
+    {
+    &quot;pageNum&quot;: 0,
+    &quot;pageSize&quot;: 0,
+    &quot;pages&quot;: 0,
+    &quot;rows&quot;: [
+    {
+    &quot;appCode&quot;: &quot;&quot;,
+    &quot;appId&quot;: 0,
+    &quot;appImg&quot;: &quot;&quot;,
+    &quot;appName&quot;: &quot;&quot;,
+    &quot;appStatus&quot;: 0,
+    &quot;appSubtitle&quot;: &quot;&quot;,
+    &quot;appUrl&quot;: &quot;&quot;,
+    &quot;lastOperatorId&quot;: 0,
+    &quot;logs&quot;: [
+    {
+    &quot;applicationId&quot;: 0,
+    &quot;createTime&quot;: 0,
+    &quot;id&quot;: 0,
+    &quot;operatorId&quot;: 0,
+    &quot;remark&quot;: &quot;&quot;,
+    &quot;stateChange&quot;: &quot;&quot;
+    }
+    ],
+    &quot;sort&quot;: 0
+    }
+    ],
+    &quot;total&quot;: 0
+    }
+</code></p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | -------------------|-------|----------- |
+    |pageNum|   |integer(int32)  | integer(int32)   |
+    |pageSize|   |integer(int32)  | integer(int32)   |
+    |pages|   |integer(int32)  | integer(int32)   |
+    |rows|   |array  | 应用表VO   |
+    |total|   |integer(int64)  | integer(int64)   |</p>
+
+<p><strong>schema属性说明</strong></p>
+
+<p><strong>应用表VO</strong></p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | ------------------|--------|----------- |
+    |appCode | 应用code   |string  |    |
+    |appId | 应用id(主键)   |integer(int64)  |    |
+    |appImg | 应用图片   |string  |    |
+    |appName | 应用名称   |string  |    |
+    |appStatus | 状态   |integer(int32)  |    |
+    |appSubtitle | 应用副标题   |string  |    |
+    |appUrl | 应用启动链接   |string  |    |
+    |lastOperatorId | 最后操作人   |integer(int64)  |    |
+    |logs | 日志   |array  | VO   |
+    |sort | 排序字段   |integer(int32)  |    |</p>
+
+<p><strong>VO</strong></p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | ------------------|--------|----------- |
+    |applicationId | 应用id   |integer(int64)  |    |
+    |createTime | 时间   |integer(int64)  |    |
+    |id | 主键   |integer(int64)  |    |
+    |operatorId | 操作人id   |integer(int64)  |    |
+    |remark | 备注   |string  |    |
+    |stateChange | 状态变更   |string  |    |</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  |PagerList«应用表VO»|
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>下架 应用</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/application/updateToOffline/{appId}</code></p>
+
+<p><strong>请求方式</strong>：<code>PUT</code></p>
+
+<p><strong>consumes</strong>:<code>[&quot;application/json&quot;]</code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |appId| appId  | path | true |integer  |    |
+    |authorization| token  | header | false |string  |    |
+    |remark| remark  | query | false |string  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code></code>`json</p>
+
+<p><code></code>`</p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>暂无</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  ||
+    | 201 | Created  ||
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>上架 应用</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/application/updateToOnline/{appId}</code></p>
+
+<p><strong>请求方式</strong>：<code>PUT</code></p>
+
+<p><strong>consumes</strong>:<code>[&quot;application/json&quot;]</code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |appId| appId  | path | true |integer  |    |
+    |authorization| token  | header | false |string  |    |
+    |remark| remark  | query | false |string  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code></code>`json</p>
+
+<p><code></code>`</p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>暂无</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  ||
+    | 201 | Created  ||
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h1>数据报表 (管理端))</h1>
+
+<h2>抽佣面板</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/dailyStatistic/commissionData</code></p>
+
+<p><strong>请求方式</strong>：<code>GET</code></p>
+
+<p><strong>consumes</strong>:<code></code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code>json
+    {
+    &quot;commissionRanking&quot;: [
+    {
+    &quot;key&quot;: {},
+    &quot;value&quot;: {}
+    }
+    ],
+    &quot;dailyCommissionData&quot;: [
+    {
+    &quot;key&quot;: {},
+    &quot;value&quot;: {}
+    }
+    ],
+    &quot;monthlyCommissionData&quot;: [
+    {
+    &quot;key&quot;: {},
+    &quot;value&quot;: {}
+    }
+    ],
+    &quot;weeklyCommissionData&quot;: [
+    {
+    &quot;key&quot;: {},
+    &quot;value&quot;: {}
+    }
+    ]
+    }
+</code></p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | -------------------|-------|----------- |
+    |commissionRanking| 抽佣数据排行榜  |array  | KeyValue   |
+    |dailyCommissionData| 抽佣日数据  |array  | KeyValue   |
+    |monthlyCommissionData| 抽佣月数据  |array  | KeyValue   |
+    |weeklyCommissionData| 抽佣周数据  |array  | KeyValue   |</p>
+
+<p><strong>schema属性说明</strong></p>
+
+<p><strong>KeyValue</strong></p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | ------------------|--------|----------- |
+    |key |    |object  |    |
+    |value |    |object  |    |</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  |抽佣面板VO|
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>抽佣面板(根据时间区间查询按日数据)</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/dailyStatistic/commissionDataDaily</code></p>
+
+<p><strong>请求方式</strong>：<code>GET</code></p>
+
+<p><strong>consumes</strong>:<code></code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |
+    |queryEndTimeStamp| 查询结束时间  | query | false |integer  |    |
+    |queryStartTimeStamp| 查询开始时间  | query | false |integer  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code>json
+    [
+    {
+    &quot;key&quot;: {},
+    &quot;value&quot;: {}
+    }
+    ]
+</code></p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | -------------------|-------|----------- |
+    |key|   |object  |    |
+    |value|   |object  |    |</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  |KeyValue|
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>查询消耗数据面板</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/dailyStatistic/consumeBoardData</code></p>
+
+<p><strong>请求方式</strong>：<code>GET</code></p>
+
+<p><strong>consumes</strong>:<code></code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |
+    |pointCode| 积分code  | query | false |string  |    |
+    |queryEndTimeStamp| 查询结束时间  | query | false |integer  |    |
+    |queryStartTimeStamp| 查询开始时间  | query | false |integer  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code>json
+    {
+    &quot;commissionRanking&quot;: [
+    {
+    &quot;key&quot;: {},
+    &quot;value&quot;: {}
+    }
+    ],
+    &quot;consumeRanking&quot;: [
+    {
+    &quot;key&quot;: {},
+    &quot;value&quot;: {}
+    }
+    ],
+    &quot;dailyConsumeData&quot;: [
+    {
+    &quot;key&quot;: {},
+    &quot;value&quot;: {}
+    }
+    ],
+    &quot;monthlyConsumeData&quot;: [
+    {
+    &quot;key&quot;: {},
+    &quot;value&quot;: {}
+    }
+    ],
+    &quot;reExchangeRanking&quot;: [
+    {
+    &quot;key&quot;: {},
+    &quot;value&quot;: {}
+    }
+    ],
+    &quot;shoppingRanking&quot;: [
+    {
+    &quot;key&quot;: {},
+    &quot;value&quot;: {}
+    }
+    ],
+    &quot;weeklyConsumeData&quot;: [
+    {
+    &quot;key&quot;: {},
+    &quot;value&quot;: {}
+    }
+    ]
+    }
+</code></p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | -------------------|-------|----------- |
+    |commissionRanking| 抽佣消耗排行榜  |array  | KeyValue   |
+    |consumeRanking| 消耗数据排行榜  |array  | KeyValue   |
+    |dailyConsumeData| 消耗日数据  |array  | KeyValue   |
+    |monthlyConsumeData| 消耗月数据  |array  | KeyValue   |
+    |reExchangeRanking| 回兑消耗排行榜  |array  | KeyValue   |
+    |shoppingRanking| 商品消耗排行榜  |array  | KeyValue   |
+    |weeklyConsumeData| 消耗周数据  |array  | KeyValue   |</p>
+
+<p><strong>schema属性说明</strong></p>
+
+<p><strong>KeyValue</strong></p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | ------------------|--------|----------- |
+    |key |    |object  |    |
+    |value |    |object  |    |</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  |ConsumeBoardVO|
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>查询消耗数据面板(根据时间区间查询按日数据)</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/dailyStatistic/consumeBoardDataDaily</code></p>
+
+<p><strong>请求方式</strong>：<code>GET</code></p>
+
+<p><strong>consumes</strong>:<code></code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |
+    |pointCode| 积分code  | query | false |string  |    |
+    |queryEndTimeStamp| 查询结束时间  | query | false |integer  |    |
+    |queryStartTimeStamp| 查询开始时间  | query | false |integer  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code>json
+    [
+    {
+    &quot;key&quot;: {},
+    &quot;value&quot;: {}
+    }
+    ]
+</code></p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | -------------------|-------|----------- |
+    |key|   |object  |    |
+    |value|   |object  |    |</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  |KeyValue|
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>获取数据报表聚合数据</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/dailyStatistic/data</code></p>
+
+<p><strong>请求方式</strong>：<code>GET</code></p>
+
+<p><strong>consumes</strong>:<code></code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |
+    |queryEndTimeStamp| 查询结束时间  | query | false |integer  |    |
+    |queryStartTimeStamp| 查询开始时间  | query | false |integer  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code>json
+    {
+    &quot;beanConsume&quot;: 0,
+    &quot;beanIssueAmount&quot;: 0,
+    &quot;beanIssueCount&quot;: 0,
+    &quot;beanIssuePeople&quot;: 0,
+    &quot;commissionAmount&quot;: 0,
+    &quot;createTime&quot;: &quot;&quot;,
+    &quot;dateTime&quot;: &quot;&quot;,
+    &quot;exchangeFee&quot;: 0,
+    &quot;id&quot;: 0,
+    &quot;registerNum&quot;: 0,
+    &quot;valueCommission&quot;: 0,
+    &quot;valueConsume&quot;: 0,
+    &quot;valueIssueAmount&quot;: 0,
+    &quot;valueReExchange&quot;: 0,
+    &quot;valueShopping&quot;: 0
+    }
+</code></p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | -------------------|-------|----------- |
+    |beanConsume| 欢乐豆消耗额度  |integer(int64)  | integer(int64)   |
+    |beanIssueAmount| 转换欢乐豆额度  |integer(int64)  | integer(int64)   |
+    |beanIssueCount| 转换欢乐豆笔数  |integer(int32)  | integer(int32)   |
+    |beanIssuePeople| 转换欢乐豆人数  |integer(int32)  | integer(int32)   |
+    |commissionAmount| 抽佣额度统计  |integer(int64)  | integer(int64)   |
+    |createTime| 统计时间  |string(date-time)  | string(date-time)   |
+    |dateTime|   |string  |    |
+    |exchangeFee| 回兑服务费  |integer(int64)  | integer(int64)   |
+    |id| 主键  |integer(int64)  | integer(int64)   |
+    |registerNum| 注册人数  |integer(int32)  | integer(int32)   |
+    |valueCommission| 欢乐值抽佣  |integer(int64)  | integer(int64)   |
+    |valueConsume| 欢乐值消耗额度  |integer(int64)  | integer(int64)   |
+    |valueIssueAmount| 欢乐值转换额度  |integer(int64)  | integer(int64)   |
+    |valueReExchange| 欢乐值回兑  |integer(int64)  | integer(int64)   |
+    |valueShopping| 欢乐值购物消费  |integer(int64)  | integer(int64)   |</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  |每日统计VO|
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>导出数据报表</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/dailyStatistic/export</code></p>
+
+<p><strong>请求方式</strong>：<code>GET</code></p>
+
+<p><strong>consumes</strong>:<code></code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |
+    |queryEndTimeStamp| 查询结束时间  | query | false |integer  |    |
+    |queryStartTimeStamp| 查询开始时间  | query | false |integer  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code></code>`json</p>
+
+<p><code></code>`</p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>暂无</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  ||
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>服务费面板</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/dailyStatistic/feeData</code></p>
+
+<p><strong>请求方式</strong>：<code>GET</code></p>
+
+<p><strong>consumes</strong>:<code></code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code>json
+    {
+    &quot;dailyFeeData&quot;: [
+    {
+    &quot;key&quot;: {},
+    &quot;value&quot;: {}
+    }
+    ],
+    &quot;feeRanking&quot;: [
+    {
+    &quot;key&quot;: {},
+    &quot;value&quot;: {}
+    }
+    ],
+    &quot;monthlyFeeData&quot;: [
+    {
+    &quot;key&quot;: {},
+    &quot;value&quot;: {}
+    }
+    ],
+    &quot;weeklyFeeData&quot;: [
+    {
+    &quot;key&quot;: {},
+    &quot;value&quot;: {}
+    }
+    ]
+    }
+</code></p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | -------------------|-------|----------- |
+    |dailyFeeData| 服务费日数据  |array  | KeyValue   |
+    |feeRanking| 服务费排行榜  |array  | KeyValue   |
+    |monthlyFeeData| 服务费月数据  |array  | KeyValue   |
+    |weeklyFeeData| 服务费周数据  |array  | KeyValue   |</p>
+
+<p><strong>schema属性说明</strong></p>
+
+<p><strong>KeyValue</strong></p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | ------------------|--------|----------- |
+    |key |    |object  |    |
+    |value |    |object  |    |</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  |服务费面板VO|
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>服务费面板(根据时间区间查询按日数据)</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/dailyStatistic/feeDataDaily</code></p>
+
+<p><strong>请求方式</strong>：<code>GET</code></p>
+
+<p><strong>consumes</strong>:<code></code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |
+    |queryEndTimeStamp| 查询结束时间  | query | false |integer  |    |
+    |queryStartTimeStamp| 查询开始时间  | query | false |integer  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code>json
+    [
+    {
+    &quot;key&quot;: {},
+    &quot;value&quot;: {}
+    }
+    ]
+</code></p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | -------------------|-------|----------- |
+    |key|   |object  |    |
+    |value|   |object  |    |</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  |KeyValue|
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>查询发放数据面板</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/dailyStatistic/issueBoardData</code></p>
+
+<p><strong>请求方式</strong>：<code>GET</code></p>
+
+<p><strong>consumes</strong>:<code></code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |
+    |pointCode| 积分code  | query | false |string  |    |
+    |queryEndTimeStamp| 查询结束时间  | query | false |integer  |    |
+    |queryStartTimeStamp| 查询开始时间  | query | false |integer  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code>json
+    {
+    &quot;dailyIssueData&quot;: [
+    {
+    &quot;key&quot;: {},
+    &quot;value&quot;: {}
+    }
+    ],
+    &quot;issueRanking&quot;: [
+    {
+    &quot;key&quot;: {},
+    &quot;value&quot;: {}
+    }
+    ],
+    &quot;monthlyIssueData&quot;: [
+    {
+    &quot;key&quot;: {},
+    &quot;value&quot;: {}
+    }
+    ],
+    &quot;weeklyIssueData&quot;: [
+    {
+    &quot;key&quot;: {},
+    &quot;value&quot;: {}
+    }
+    ]
+    }
+</code></p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | -------------------|-------|----------- |
+    |dailyIssueData| 发放日数据  |array  | KeyValue   |
+    |issueRanking| 发放数据排行榜  |array  | KeyValue   |
+    |monthlyIssueData| 发放月数据  |array  | KeyValue   |
+    |weeklyIssueData| 发放周数据  |array  | KeyValue   |</p>
+
+<p><strong>schema属性说明</strong></p>
+
+<p><strong>KeyValue</strong></p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | ------------------|--------|----------- |
+    |key |    |object  |    |
+    |value |    |object  |    |</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  |IssueBoardVO|
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>查询发放数据面板(根据时间区间查询按日数据)</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/dailyStatistic/issueBoardDataDaily</code></p>
+
+<p><strong>请求方式</strong>：<code>GET</code></p>
+
+<p><strong>consumes</strong>:<code></code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |
+    |pointCode| 积分code  | query | false |string  |    |
+    |queryEndTimeStamp| 查询结束时间  | query | false |integer  |    |
+    |queryStartTimeStamp| 查询开始时间  | query | false |integer  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code>json
+    [
+    {
+    &quot;key&quot;: {},
+    &quot;value&quot;: {}
+    }
+    ]
+</code></p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | -------------------|-------|----------- |
+    |key|   |object  |    |
+    |value|   |object  |    |</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  |KeyValue|
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>获取数据报表(分页)</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/dailyStatistic/pages</code></p>
+
+<p><strong>请求方式</strong>：<code>GET</code></p>
+
+<p><strong>consumes</strong>:<code></code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |
+    |count| 是否计算总数  | query | false |boolean  |    |
+    |pageIndex| 第几页  | query | false |integer  |    |
+    |pageSize| 每页大小  | query | false |integer  |    |
+    |queryEndTimeStamp| 查询结束时间  | query | false |integer  |    |
+    |queryStartTimeStamp| 查询开始时间  | query | false |integer  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code>json
+    {
+    &quot;pageNum&quot;: 0,
+    &quot;pageSize&quot;: 0,
+    &quot;pages&quot;: 0,
+    &quot;rows&quot;: [
+    {
+    &quot;beanConsume&quot;: 0,
+    &quot;beanIssueAmount&quot;: 0,
+    &quot;beanIssueCount&quot;: 0,
+    &quot;beanIssuePeople&quot;: 0,
+    &quot;commissionAmount&quot;: 0,
+    &quot;createTime&quot;: &quot;&quot;,
+    &quot;dateTime&quot;: &quot;&quot;,
+    &quot;exchangeFee&quot;: 0,
+    &quot;id&quot;: 0,
+    &quot;registerNum&quot;: 0,
+    &quot;valueCommission&quot;: 0,
+    &quot;valueConsume&quot;: 0,
+    &quot;valueIssueAmount&quot;: 0,
+    &quot;valueReExchange&quot;: 0,
+    &quot;valueShopping&quot;: 0
+    }
+    ],
+    &quot;total&quot;: 0
+    }
+</code></p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | -------------------|-------|----------- |
+    |pageNum|   |integer(int32)  | integer(int32)   |
+    |pageSize|   |integer(int32)  | integer(int32)   |
+    |pages|   |integer(int32)  | integer(int32)   |
+    |rows|   |array  | 每日统计VO   |
+    |total|   |integer(int64)  | integer(int64)   |</p>
+
+<p><strong>schema属性说明</strong></p>
+
+<p><strong>每日统计VO</strong></p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | ------------------|--------|----------- |
+    |beanConsume | 欢乐豆消耗额度   |integer(int64)  |    |
+    |beanIssueAmount | 转换欢乐豆额度   |integer(int64)  |    |
+    |beanIssueCount | 转换欢乐豆笔数   |integer(int32)  |    |
+    |beanIssuePeople | 转换欢乐豆人数   |integer(int32)  |    |
+    |commissionAmount | 抽佣额度统计   |integer(int64)  |    |
+    |createTime | 统计时间   |string(date-time)  |    |
+    |dateTime |    |string  |    |
+    |exchangeFee | 回兑服务费   |integer(int64)  |    |
+    |id | 主键   |integer(int64)  |    |
+    |registerNum | 注册人数   |integer(int32)  |    |
+    |valueCommission | 欢乐值抽佣   |integer(int64)  |    |
+    |valueConsume | 欢乐值消耗额度   |integer(int64)  |    |
+    |valueIssueAmount | 欢乐值转换额度   |integer(int64)  |    |
+    |valueReExchange | 欢乐值回兑   |integer(int64)  |    |
+    |valueShopping | 欢乐值购物消费   |integer(int64)  |    |</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  |PagerList«每日统计VO»|
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h1>文件上传 (管理端))</h1>
+
+<h2>上传</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/file/upload</code></p>
+
+<p><strong>请求方式</strong>：<code>POST</code></p>
+
+<p><strong>consumes</strong>:<code>[&quot;multipart/form-data&quot;]</code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |
+    |file| file  | formData | false |file  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code>json
+    {
+    &quot;str&quot;: &quot;&quot;
+    }
+</code></p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | -------------------|-------|----------- |
+    |str|   |string  |    |</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  |StrResult|
+    | 201 | Created  ||
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h1>渠道表 (管理端))</h1>
+
+<h2>获取单个积分渠道信息</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/channel</code></p>
+
+<p><strong>请求方式</strong>：<code>GET</code></p>
+
+<p><strong>consumes</strong>:<code></code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |
+    |channelId| channelId  | query | true |integer  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code>json
+    {
+    &quot;channelDailyThreshold&quot;: 0,
+    &quot;channelDailyUserThreshold&quot;: 0,
+    &quot;channelEndTime&quot;: 0,
+    &quot;channelId&quot;: 0,
+    &quot;channelKey&quot;: &quot;&quot;,
+    &quot;channelName&quot;: &quot;&quot;,
+    &quot;channelStartTime&quot;: 0,
+    &quot;channelStatus&quot;: 0,
+    &quot;closeThreshold&quot;: 0,
+    &quot;contactInfo&quot;: {},
+    &quot;createTime&quot;: 0,
+    &quot;logs&quot;: [
+    {
+    &quot;createTime&quot;: 0,
+    &quot;id&quot;: 0,
+    &quot;operatorId&quot;: 0,
+    &quot;remark&quot;: &quot;&quot;,
+    &quot;stateChange&quot;: &quot;&quot;
+    }
+    ],
+    &quot;pointId&quot;: 0,
+    &quot;promptThreshold&quot;: 0
+    }
+</code></p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | -------------------|-------|----------- |
+    |channelDailyThreshold| 日发放限额  |integer(int64)  | integer(int64)   |
+    |channelDailyUserThreshold| 单用户日充值限额  |integer(int64)  | integer(int64)   |
+    |channelEndTime| 有效期结束时间  |integer(int64)  | integer(int64)   |
+    |channelId| 渠道id(主键)  |integer(int64)  | integer(int64)   |
+    |channelKey| 渠道key  |string  |    |
+    |channelName| 渠道名称  |string  |    |
+    |channelStartTime| 有效期开始时间  |integer(int64)  | integer(int64)   |
+    |channelStatus| 积分状态  |integer(int32)  | integer(int32)   |
+    |closeThreshold| 坏账关闭阈值  |integer(int64)  | integer(int64)   |
+    |contactInfo| 联系人信息map  |object  |    |
+    |createTime| 创建时间  |integer(int64)  | integer(int64)   |
+    |logs| 日志信息  |array  | 渠道操作日志表VO   |
+    |pointId| 积分主键  |integer(int64)  | integer(int64)   |
+    |promptThreshold| 坏账提醒阈值  |integer(int64)  | integer(int64)   |</p>
+
+<p><strong>schema属性说明</strong></p>
+
+<p><strong>渠道操作日志表VO</strong></p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | ------------------|--------|----------- |
+    |createTime | 时间   |integer(int64)  |    |
+    |id | 主键   |integer(int64)  |    |
+    |operatorId | 操作人id   |integer(int64)  |    |
+    |remark | 备注   |string  |    |
+    |stateChange | 状态变更   |string  |    |</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  |渠道表VO|
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>新增 积分渠道</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/channel</code></p>
+
+<p><strong>请求方式</strong>：<code>POST</code></p>
+
+<p><strong>consumes</strong>:<code>[&quot;application/json&quot;]</code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求示例</strong>：
+    <code>json
+        {
+        &quot;channelDailyThreshold&quot;: 0,
+        &quot;channelDailyUserThreshold&quot;: 0,
+        &quot;channelEndTime&quot;: 0,
+        &quot;channelId&quot;: 0,
+        &quot;channelName&quot;: &quot;&quot;,
+        &quot;channelStartTime&quot;: 0,
+        &quot;closeThreshold&quot;: 0,
+        &quot;contactInfo&quot;: &quot;&quot;,
+        &quot;pointId&quot;: 0,
+        &quot;promptThreshold&quot;: 0
+        }
+    </code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |
+    |channelDTO| channelDTO  | body | true |渠道表DTO  | 渠道表DTO   |</p>
+
+<p><strong>schema属性说明</strong></p>
+
+<p><strong>渠道表DTO</strong></p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |channelDailyThreshold| 日发放限额  | body | false |integer(int64)  |    |
+    |channelDailyUserThreshold| 单用户日充值限额  | body | false |integer(int64)  |    |
+    |channelEndTime| 有效期结束时间  | body | false |integer(int64)  |    |
+    |channelId| 渠道id(主键)  | body | false |integer(int64)  |    |
+    |channelName| 渠道名称  | body | false |string  |    |
+    |channelStartTime| 有效期开始时间  | body | false |integer(int64)  |    |
+    |closeThreshold| 坏账关闭阈值  | body | false |integer(int64)  |    |
+    |contactInfo| 联系人信息map  | body | false |string  |    |
+    |pointId| 积分主键  | body | false |integer(int64)  |    |
+    |promptThreshold| 坏账提醒阈值  | body | false |integer(int64)  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code></code>`json</p>
+
+<p><code></code>`</p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>暂无</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  ||
+    | 201 | Created  ||
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>修改 积分渠道</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/channel</code></p>
+
+<p><strong>请求方式</strong>：<code>PUT</code></p>
+
+<p><strong>consumes</strong>:<code>[&quot;application/json&quot;]</code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求示例</strong>：
+    <code>json
+        {
+        &quot;channelDailyThreshold&quot;: 0,
+        &quot;channelDailyUserThreshold&quot;: 0,
+        &quot;channelEndTime&quot;: 0,
+        &quot;channelId&quot;: 0,
+        &quot;channelName&quot;: &quot;&quot;,
+        &quot;channelStartTime&quot;: 0,
+        &quot;closeThreshold&quot;: 0,
+        &quot;contactInfo&quot;: &quot;&quot;,
+        &quot;pointId&quot;: 0,
+        &quot;promptThreshold&quot;: 0
+        }
+    </code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |
+    |channelDTO| channelDTO  | body | true |渠道表DTO  | 渠道表DTO   |</p>
+
+<p><strong>schema属性说明</strong></p>
+
+<p><strong>渠道表DTO</strong></p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |channelDailyThreshold| 日发放限额  | body | false |integer(int64)  |    |
+    |channelDailyUserThreshold| 单用户日充值限额  | body | false |integer(int64)  |    |
+    |channelEndTime| 有效期结束时间  | body | false |integer(int64)  |    |
+    |channelId| 渠道id(主键)  | body | false |integer(int64)  |    |
+    |channelName| 渠道名称  | body | false |string  |    |
+    |channelStartTime| 有效期开始时间  | body | false |integer(int64)  |    |
+    |closeThreshold| 坏账关闭阈值  | body | false |integer(int64)  |    |
+    |contactInfo| 联系人信息map  | body | false |string  |    |
+    |pointId| 积分主键  | body | false |integer(int64)  |    |
+    |promptThreshold| 坏账提醒阈值  | body | false |integer(int64)  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code></code>`json</p>
+
+<p><code></code>`</p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>暂无</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  ||
+    | 201 | Created  ||
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>状态 下拉</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/channel/channelStates</code></p>
+
+<p><strong>请求方式</strong>：<code>GET</code></p>
+
+<p><strong>consumes</strong>:<code></code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code></code>`json</p>
+
+<p><code></code>`</p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>暂无</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  ||
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>获取积分选择下拉</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/channel/points</code></p>
+
+<p><strong>请求方式</strong>：<code>GET</code></p>
+
+<p><strong>consumes</strong>:<code></code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code>json
+    [
+    {
+    &quot;createTime&quot;: 0,
+    &quot;pointCode&quot;: &quot;&quot;,
+    &quot;pointExchangeRate&quot;: 0,
+    &quot;pointId&quot;: 0,
+    &quot;pointName&quot;: &quot;&quot;
+    }
+    ]
+</code></p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | -------------------|-------|----------- |
+    |createTime| 创建时间  |integer(int64)  | integer(int64)   |
+    |pointCode| 积分code  |string  |    |
+    |pointExchangeRate| 积分汇率(RMB)  |integer(int32)  | integer(int32)   |
+    |pointId|  积分表主键  |integer(int64)  | integer(int64)   |
+    |pointName| 积分名称  |string  |    |</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  |积分表VO|
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>分页 查询渠道</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/channel/selectChannels</code></p>
+
+<p><strong>请求方式</strong>：<code>GET</code></p>
+
+<p><strong>consumes</strong>:<code></code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |
+    |count| 是否计算总数  | query | false |boolean  |    |
+    |pageIndex| 第几页  | query | false |integer  |    |
+    |pageSize| 每页大小  | query | false |integer  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code>json
+    {
+    &quot;pageNum&quot;: 0,
+    &quot;pageSize&quot;: 0,
+    &quot;pages&quot;: 0,
+    &quot;rows&quot;: [
+    {
+    &quot;channelDailyThreshold&quot;: 0,
+    &quot;channelDailyUserThreshold&quot;: 0,
+    &quot;channelEndTime&quot;: 0,
+    &quot;channelId&quot;: 0,
+    &quot;channelKey&quot;: &quot;&quot;,
+    &quot;channelName&quot;: &quot;&quot;,
+    &quot;channelStartTime&quot;: 0,
+    &quot;channelStatus&quot;: 0,
+    &quot;closeThreshold&quot;: 0,
+    &quot;createTime&quot;: 0,
+    &quot;logs&quot;: [
+    {
+    &quot;createTime&quot;: 0,
+    &quot;id&quot;: 0,
+    &quot;operatorId&quot;: 0,
+    &quot;remark&quot;: &quot;&quot;,
+    &quot;stateChange&quot;: &quot;&quot;
+    }
+    ],
+    &quot;pointId&quot;: 0,
+    &quot;promptThreshold&quot;: 0
+    }
+    ],
+    &quot;total&quot;: 0
+    }
+</code></p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | -------------------|-------|----------- |
+    |pageNum|   |integer(int32)  | integer(int32)   |
+    |pageSize|   |integer(int32)  | integer(int32)   |
+    |pages|   |integer(int32)  | integer(int32)   |
+    |rows|   |array  | 渠道表ListVO   |
+    |total|   |integer(int64)  | integer(int64)   |</p>
+
+<p><strong>schema属性说明</strong></p>
+
+<p><strong>渠道表ListVO</strong></p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | ------------------|--------|----------- |
+    |channelDailyThreshold | 日发放限额   |integer(int64)  |    |
+    |channelDailyUserThreshold | 单用户日充值限额   |integer(int64)  |    |
+    |channelEndTime | 有效期结束时间   |integer(int64)  |    |
+    |channelId | 渠道id(主键)   |integer(int64)  |    |
+    |channelKey | 渠道key   |string  |    |
+    |channelName | 渠道名称   |string  |    |
+    |channelStartTime | 有效期开始时间   |integer(int64)  |    |
+    |channelStatus | 积分状态   |integer(int32)  |    |
+    |closeThreshold | 坏账关闭阈值   |integer(int64)  |    |
+    |createTime | 创建时间   |integer(int64)  |    |
+    |logs | 日志信息   |array  | 渠道操作日志表VO   |
+    |pointId | 积分主键   |integer(int64)  |    |
+    |promptThreshold | 坏账提醒阈值   |integer(int64)  |    |</p>
+
+<p><strong>渠道操作日志表VO</strong></p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | ------------------|--------|----------- |
+    |createTime | 时间   |integer(int64)  |    |
+    |id | 主键   |integer(int64)  |    |
+    |operatorId | 操作人id   |integer(int64)  |    |
+    |remark | 备注   |string  |    |
+    |stateChange | 状态变更   |string  |    |</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  |PagerList«渠道表ListVO»|
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>禁用 积分渠道</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/channel/updateToOffline/{channelId}</code></p>
+
+<p><strong>请求方式</strong>：<code>PUT</code></p>
+
+<p><strong>consumes</strong>:<code>[&quot;application/json&quot;]</code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |
+    |channelId| channelId  | path | true |integer  |    |
+    |remark| remark  | query | true |string  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code></code>`json</p>
+
+<p><code></code>`</p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>暂无</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  ||
+    | 201 | Created  ||
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>启用 积分渠道</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/channel/updateToOnline/{channelId}</code></p>
+
+<p><strong>请求方式</strong>：<code>PUT</code></p>
+
+<p><strong>consumes</strong>:<code>[&quot;application/json&quot;]</code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |
+    |channelId| channelId  | path | true |integer  |    |
+    |remark| remark  | query | true |string  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code></code>`json</p>
+
+<p><code></code>`</p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>暂无</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  ||
+    | 201 | Created  ||
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h1>积分表 (管理端))</h1>
+
+<h2>查询积分</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/point</code></p>
+
+<p><strong>请求方式</strong>：<code>GET</code></p>
+
+<p><strong>consumes</strong>:<code></code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |
+    |pointId| pointId  | query | true |integer  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code>json
+    {
+    &quot;createTime&quot;: 0,
+    &quot;pointCode&quot;: &quot;&quot;,
+    &quot;pointExchangeRate&quot;: 0,
+    &quot;pointId&quot;: 0,
+    &quot;pointName&quot;: &quot;&quot;
+    }
+</code></p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | -------------------|-------|----------- |
+    |createTime| 创建时间  |integer(int64)  | integer(int64)   |
+    |pointCode| 积分code  |string  |    |
+    |pointExchangeRate| 积分汇率(RMB)  |integer(int32)  | integer(int32)   |
+    |pointId|  积分表主键  |integer(int64)  | integer(int64)   |
+    |pointName| 积分名称  |string  |    |</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  |积分表VO|
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>新增积分</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/point</code></p>
+
+<p><strong>请求方式</strong>：<code>POST</code></p>
+
+<p><strong>consumes</strong>:<code>[&quot;application/json&quot;]</code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求示例</strong>：
+    <code>json
+        {
+        &quot;pointCode&quot;: &quot;&quot;,
+        &quot;pointExchangeRate&quot;: 0,
+        &quot;pointId&quot;: 0,
+        &quot;pointName&quot;: &quot;&quot;
+        }
+    </code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |
+    |pointDTO| pointDTO  | body | true |积分表DTO  | 积分表DTO   |</p>
+
+<p><strong>schema属性说明</strong></p>
+
+<p><strong>积分表DTO</strong></p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |pointCode| 积分code  | body | false |string  |    |
+    |pointExchangeRate| 积分汇率(RMB)  | body | false |integer(int32)  |    |
+    |pointId|  积分表主键  | body | false |integer(int64)  |    |
+    |pointName| 积分名称  | body | false |string  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code></code>`json</p>
+
+<p><code></code>`</p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>暂无</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  ||
+    | 201 | Created  ||
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>修改积分</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/point</code></p>
+
+<p><strong>请求方式</strong>：<code>PUT</code></p>
+
+<p><strong>consumes</strong>:<code>[&quot;application/json&quot;]</code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求示例</strong>：
+    <code>json
+        {
+        &quot;pointCode&quot;: &quot;&quot;,
+        &quot;pointExchangeRate&quot;: 0,
+        &quot;pointId&quot;: 0,
+        &quot;pointName&quot;: &quot;&quot;
+        }
+    </code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |
+    |pointDTO| pointDTO  | body | true |积分表DTO  | 积分表DTO   |</p>
+
+<p><strong>schema属性说明</strong></p>
+
+<p><strong>积分表DTO</strong></p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |pointCode| 积分code  | body | false |string  |    |
+    |pointExchangeRate| 积分汇率(RMB)  | body | false |integer(int32)  |    |
+    |pointId|  积分表主键  | body | false |integer(int64)  |    |
+    |pointName| 积分名称  | body | false |string  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code></code>`json</p>
+
+<p><code></code>`</p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>暂无</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  ||
+    | 201 | Created  ||
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>分页积分列表</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/point/points</code></p>
+
+<p><strong>请求方式</strong>：<code>GET</code></p>
+
+<p><strong>consumes</strong>:<code></code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |
+    |count| 是否计算总数  | query | false |boolean  |    |
+    |pageIndex| 第几页  | query | false |integer  |    |
+    |pageSize| 每页大小  | query | false |integer  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code>json
+    {
+    &quot;pageNum&quot;: 0,
+    &quot;pageSize&quot;: 0,
+    &quot;pages&quot;: 0,
+    &quot;rows&quot;: [
+    {
+    &quot;createTime&quot;: 0,
+    &quot;pointCode&quot;: &quot;&quot;,
+    &quot;pointExchangeRate&quot;: 0,
+    &quot;pointId&quot;: 0,
+    &quot;pointName&quot;: &quot;&quot;
+    }
+    ],
+    &quot;total&quot;: 0
+    }
+</code></p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | -------------------|-------|----------- |
+    |pageNum|   |integer(int32)  | integer(int32)   |
+    |pageSize|   |integer(int32)  | integer(int32)   |
+    |pages|   |integer(int32)  | integer(int32)   |
+    |rows|   |array  | 积分表VO   |
+    |total|   |integer(int64)  | integer(int64)   |</p>
+
+<p><strong>schema属性说明</strong></p>
+
+<p><strong>积分表VO</strong></p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | ------------------|--------|----------- |
+    |createTime | 创建时间   |integer(int64)  |    |
+    |pointCode | 积分code   |string  |    |
+    |pointExchangeRate | 积分汇率(RMB)   |integer(int32)  |    |
+    |pointId |  积分表主键   |integer(int64)  |    |
+    |pointName | 积分名称   |string  |    |</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  |PagerList«积分表VO»|
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h1>记录管理 (管理端))</h1>
+
+<h2>获取发放渠道记录</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/userPointBill/channelRecords</code></p>
+
+<p><strong>请求方式</strong>：<code>GET</code></p>
+
+<p><strong>consumes</strong>:<code></code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |
+    |billType| 类型  | query | false |integer  |    |
+    |channelName| 渠道名称  | query | false |string  |    |
+    |count| 是否计算总数  | query | false |boolean  |    |
+    |pageIndex| 第几页  | query | false |integer  |    |
+    |pageSize| 每页大小  | query | false |integer  |    |
+    |queryEndTimeStamp| 查询结束时间  | query | false |integer  |    |
+    |queryStartTimeStamp| 查询开始时间  | query | false |integer  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code>json
+    {
+    &quot;pageNum&quot;: 0,
+    &quot;pageSize&quot;: 0,
+    &quot;pages&quot;: 0,
+    &quot;rows&quot;: [
+    {
+    &quot;billId&quot;: 0,
+    &quot;billType&quot;: 0,
+    &quot;channelChangedPoints&quot;: 0,
+    &quot;channelId&quot;: 0,
+    &quot;channelName&quot;: &quot;&quot;,
+    &quot;createTime&quot;: &quot;&quot;,
+    &quot;pointId&quot;: 0,
+    &quot;relationId&quot;: 0
+    }
+    ],
+    &quot;total&quot;: 0
+    }
+</code></p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | -------------------|-------|----------- |
+    |pageNum|   |integer(int32)  | integer(int32)   |
+    |pageSize|   |integer(int32)  | integer(int32)   |
+    |pages|   |integer(int32)  | integer(int32)   |
+    |rows|   |array  | 渠道记录VO   |
+    |total|   |integer(int64)  | integer(int64)   |</p>
+
+<p><strong>schema属性说明</strong></p>
+
+<p><strong>渠道记录VO</strong></p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | ------------------|--------|----------- |
+    |billId | 账单主键   |integer(int64)  |    |
+    |billType | 账单类型   |integer(int32)  |    |
+    |channelChangedPoints | 渠道变动积分数   |integer(int64)  |    |
+    |channelId | 渠道id   |integer(int64)  |    |
+    |channelName | 渠道名称   |string  |    |
+    |createTime | 创建时间   |string(date-time)  |    |
+    |pointId | 积分主键   |integer(int64)  |    |
+    |relationId | 关联id   |integer(int64)  |    |</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  |PagerList«渠道记录VO»|
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>获取抽佣记录</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/userPointBill/commissionRecords</code></p>
+
+<p><strong>请求方式</strong>：<code>GET</code></p>
+
+<p><strong>consumes</strong>:<code></code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |appName| 应用名称  | query | false |string  |    |
+    |authorization| token  | header | false |string  |    |
+    |count| 是否计算总数  | query | false |boolean  |    |
+    |pageIndex| 第几页  | query | false |integer  |    |
+    |pageSize| 每页大小  | query | false |integer  |    |
+    |queryEndTimeStamp| 查询结束时间  | query | false |integer  |    |
+    |queryStartTimeStamp| 查询开始时间  | query | false |integer  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code>json
+    {
+    &quot;pageNum&quot;: 0,
+    &quot;pageSize&quot;: 0,
+    &quot;pages&quot;: 0,
+    &quot;rows&quot;: [
+    {
+    &quot;appName&quot;: &quot;&quot;,
+    &quot;billId&quot;: 0,
+    &quot;commissionRatio&quot;: 0,
+    &quot;createTime&quot;: &quot;&quot;,
+    &quot;relationId&quot;: 0,
+    &quot;userWinedPoints&quot;: 0
+    }
+    ],
+    &quot;total&quot;: 0
+    }
+</code></p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | -------------------|-------|----------- |
+    |pageNum|   |integer(int32)  | integer(int32)   |
+    |pageSize|   |integer(int32)  | integer(int32)   |
+    |pages|   |integer(int32)  | integer(int32)   |
+    |rows|   |array  | 抽佣记录VO   |
+    |total|   |integer(int64)  | integer(int64)   |</p>
+
+<p><strong>schema属性说明</strong></p>
+
+<p><strong>抽佣记录VO</strong></p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | ------------------|--------|----------- |
+    |appName | 应用名称   |string  |    |
+    |billId | 账单主键   |integer(int64)  |    |
+    |commissionRatio | 抽佣比例   |integer(int32)  |    |
+    |createTime | 创建时间   |string(date-time)  |    |
+    |relationId | 关联id   |integer(int64)  |    |
+    |userWinedPoints | 获胜积分   |integer(int64)  |    |</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  |PagerList«抽佣记录VO»|
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>获取积分记录</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/userPointBill/pointRecords</code></p>
+
+<p><strong>请求方式</strong>：<code>GET</code></p>
+
+<p><strong>consumes</strong>:<code></code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |
+    |billType| 类型1-支出 2-收入  | query | false |integer  |    |
+    |count| 是否计算总数  | query | false |boolean  |    |
+    |firstChargeMark| 首充筛选:0-非首充 1-首充  | query | false |integer  |    |
+    |pageIndex| 第几页  | query | false |integer  |    |
+    |pageSize| 每页大小  | query | false |integer  |    |
+    |pointCode| 积分code  | query | false |string  |    |
+    |queryEndTimeStamp| 查询结束时间  | query | false |integer  |    |
+    |queryStartTimeStamp| 查询开始时间  | query | false |integer  |    |
+    |userId| 用户主键  | query | false |integer  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code>json
+    {
+    &quot;pageNum&quot;: 0,
+    &quot;pageSize&quot;: 0,
+    &quot;pages&quot;: 0,
+    &quot;rows&quot;: [
+    {
+    &quot;appName&quot;: &quot;&quot;,
+    &quot;billId&quot;: 0,
+    &quot;billType&quot;: 0,
+    &quot;changeReason&quot;: &quot;&quot;,
+    &quot;createTime&quot;: &quot;&quot;,
+    &quot;firstChargeMark&quot;: 0,
+    &quot;pointId&quot;: 0,
+    &quot;relationId&quot;: 0,
+    &quot;userChangedPoints&quot;: 0,
+    &quot;userEndPoints&quot;: 0,
+    &quot;userId&quot;: 0
+    }
+    ],
+    &quot;total&quot;: 0
+    }
+</code></p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | -------------------|-------|----------- |
+    |pageNum|   |integer(int32)  | integer(int32)   |
+    |pageSize|   |integer(int32)  | integer(int32)   |
+    |pages|   |integer(int32)  | integer(int32)   |
+    |rows|   |array  | 积分记录VO   |
+    |total|   |integer(int64)  | integer(int64)   |</p>
+
+<p><strong>schema属性说明</strong></p>
+
+<p><strong>积分记录VO</strong></p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | ------------------|--------|----------- |
+    |appName | 应用名称   |string  |    |
+    |billId | 账单主键   |integer(int64)  |    |
+    |billType | 关联类型   |integer(int32)  |    |
+    |changeReason | 变更原因   |string  |    |
+    |createTime | 生成时间   |string(date-time)  |    |
+    |firstChargeMark | 首充标记   |integer(int32)  |    |
+    |pointId | 积分主键   |integer(int64)  |    |
+    |relationId | 关联id   |integer(int64)  |    |
+    |userChangedPoints | 用户变动积分   |integer(int64)  |    |
+    |userEndPoints | 用户变动后积分   |integer(int64)  |    |
+    |userId | 用户id   |integer(int64)  |    |</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  |PagerList«积分记录VO»|
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>
+
+<h2>获取回兑记录</h2>
+
+<p><strong>接口描述</strong>:</p>
+
+<p><strong>接口地址</strong>:<code>/manage/userPointBill/reExchangeRecords</code></p>
+
+<p><strong>请求方式</strong>：<code>GET</code></p>
+
+<p><strong>consumes</strong>:<code></code></p>
+
+<p><strong>produces</strong>:<code>[&quot;*/*&quot;]</code></p>
+
+<p><strong>请求参数</strong>：</p>
+
+<p>| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
+    | ------------ | -------------------------------- |-----------|--------|----|--- |
+    |authorization| token  | header | false |string  |    |
+    |count| 是否计算总数  | query | false |boolean  |    |
+    |pageIndex| 第几页  | query | false |integer  |    |
+    |pageSize| 每页大小  | query | false |integer  |    |
+    |queryEndTimeStamp| 查询结束时间  | query | false |integer  |    |
+    |queryStartTimeStamp| 查询开始时间  | query | false |integer  |    |
+    |targetPointName| 应用名称  | query | false |string  |    |
+    |userId| 用户主键  | query | false |integer  |    |</p>
+
+<p><strong>响应示例</strong>:</p>
+
+<p><code>json
+    {
+    &quot;pageNum&quot;: 0,
+    &quot;pageSize&quot;: 0,
+    &quot;pages&quot;: 0,
+    &quot;rows&quot;: [
+    {
+    &quot;billId&quot;: 0,
+    &quot;commission&quot;: 0,
+    &quot;createTime&quot;: &quot;&quot;,
+    &quot;feeRatio&quot;: 0,
+    &quot;pointId&quot;: 0,
+    &quot;relationId&quot;: 0,
+    &quot;targetPointChanged&quot;: 0,
+    &quot;targetPointName&quot;: &quot;&quot;,
+    &quot;userChangedPoints&quot;: 0,
+    &quot;userId&quot;: 0
+    }
+    ],
+    &quot;total&quot;: 0
+    }
+</code></p>
+
+<p><strong>响应参数</strong>:</p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | -------------------|-------|----------- |
+    |pageNum|   |integer(int32)  | integer(int32)   |
+    |pageSize|   |integer(int32)  | integer(int32)   |
+    |pages|   |integer(int32)  | integer(int32)   |
+    |rows|   |array  | 回兑记录VO   |
+    |total|   |integer(int64)  | integer(int64)   |</p>
+
+<p><strong>schema属性说明</strong></p>
+
+<p><strong>回兑记录VO</strong></p>
+
+<p>| 参数名称         | 参数说明                             |    类型 |  schema |
+    | ------------ | ------------------|--------|----------- |
+    |billId | 账单主键   |integer(int64)  |    |
+    |commission | 佣金   |integer(int64)  |    |
+    |createTime | 创建时间   |string(date-time)  |    |
+    |feeRatio | 服务费比例   |integer(int32)  |    |
+    |pointId | 积分主键   |integer(int64)  |    |
+    |relationId | 关联id   |integer(int64)  |    |
+    |targetPointChanged | 回兑额度   |integer(int64)  |    |
+    |targetPointName | 被兑积分名称   |string  |    |
+    |userChangedPoints | 消耗积分   |integer(int64)  |    |
+    |userId | 用户id   |integer(int64)  |    |</p>
+
+<p><strong>响应状态</strong>:</p>
+
+<p>| 状态码         | 说明                            |    schema                         |
+    | ------------ | -------------------------------- |---------------------- |
+    | 200 | OK  |PagerList«回兑记录VO»|
+    | 401 | Unauthorized  ||
+    | 403 | Forbidden  ||
+    | 404 | Not Found  ||</p>

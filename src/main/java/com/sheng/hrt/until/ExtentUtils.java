@@ -29,7 +29,10 @@ public class ExtentUtils implements TestWatcher {
     }
     @Override
     public void testDisabled(ExtensionContext context, Optional<String> reason) {
-
+        ExtentTest test2  = test.createNode(context.getDisplayName(),"Test Aborted");
+        // step log
+        test2.log(Status.SKIP, reason.toString());
+        flushReports(extent, test2);
     }
     @Override
     public void testSuccessful(ExtensionContext context) {
@@ -40,13 +43,16 @@ public class ExtentUtils implements TestWatcher {
     }
     @Override
     public void testAborted(ExtensionContext context, Throwable cause) {
-
+        ExtentTest test2  = test.createNode(context.getDisplayName(),"Test Aborted");
+        // step log
+        test2.log(Status.SKIP, cause);
+        flushReports(extent, test2);
     }
     @Override
     public void testFailed(ExtensionContext context, Throwable cause) {
         ExtentTest test2  = test.createNode(context.getDisplayName(),"Test failed");
         // step log
-        test2.log(Status.FAIL, "-");
+        test2.log(Status.FAIL, cause);
         flushReports(extent, test2);
     }
 

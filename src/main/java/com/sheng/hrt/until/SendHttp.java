@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.github.kevinsawicki.http.HttpRequest;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
@@ -62,6 +63,16 @@ public class SendHttp {
                 .acceptJson();
         return getJsonObject(httpRequest);
     };
+    public JSONObject putHttp(String url, Map<String,String> headers,String params){
+        HttpRequest httpRequest = HttpRequest
+                .put(url)
+                .headers(headers)
+                .contentType(HttpRequest.CONTENT_TYPE_JSON)
+                .acceptJson();
+        httpRequest.send(params);
+        return getJsonObject(httpRequest);
+    };
+
     public JSONObject putHttplj(String url, Map<String,String> headers,Map<String,String> params){
         StringBuilder baseUrl = new StringBuilder(url);
         for(String value : params.values()){
@@ -72,6 +83,17 @@ public class SendHttp {
                 .headers(headers)
                 .contentType(HttpRequest.CONTENT_TYPE_JSON)
                 .acceptJson();
+        return getJsonObject(httpRequest);
+    };
+    public JSONObject putHttp(String url, Map<String,String> headers,String id,Map<String,String> params){
+        url += id;
+        HttpRequest httpRequest = HttpRequest
+                .put(url)
+                .headers(headers)
+                .form(params)
+                .contentType(HttpRequest.CONTENT_TYPE_FORM)
+                .acceptJson();
+
         return getJsonObject(httpRequest);
     };
     public JSONObject postHttp(String url, Map<String,String> headers,JSONObject body){
@@ -100,6 +122,16 @@ public class SendHttp {
                 .contentType(HttpRequest.CONTENT_TYPE_JSON)
                 .acceptJson();
         httpRequest.send(params);
+        return getJsonObject(httpRequest);
+    };
+    public JSONObject postHttp(String url, Map<String,String> headers, File params){
+        HttpRequest httpRequest = HttpRequest
+                .post(url)
+                .headers(headers)
+                .contentType(HttpRequest.CONTENT_TYPE_JSON)
+                .acceptJson();
+
+        httpRequest.receive(params);
         return getJsonObject(httpRequest);
     };
     public JSONObject deleteHttp(String url, Map<String,String> headers,String params){

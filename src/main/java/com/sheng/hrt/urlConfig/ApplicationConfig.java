@@ -7,7 +7,7 @@ public class ApplicationConfig {
     /** 应用管理
      *
      */
-    public static String baseUrl = BannerConfig.baseUrl+"/manage/application";
+    public static String baseUrl = BaseUrlConfig.baseUrl+"/manage/application";
     /** 获取单个用户 GET
      *
      */

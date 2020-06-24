@@ -13,4 +13,9 @@ public class BaseUrlConfig {
      *
      */
     public static String auth = baseUrl + "/api/third/auth";
+
+    /** 文件上传
+     *
+     */
+    public static String upload = baseUrl + "/manage/file/upload";
 }

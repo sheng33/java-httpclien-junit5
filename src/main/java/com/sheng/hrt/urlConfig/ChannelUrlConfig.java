@@ -5,7 +5,7 @@ package com.sheng.hrt.urlConfig;
  *
  */
 public class ChannelUrlConfig {
-    public static String baseUrl = BaseUrl.BaseUrl + "/manage/channel";
+    public static String baseUrl = BaseUrlConfig.baseUrl + "/manage/channel";
     /** 获取单个积分渠道信息 GET
      *
      */
@@ -33,10 +33,10 @@ public class ChannelUrlConfig {
     /** 禁用 积分渠道 PUT
      *
      */
-    public static String updateToOffline  = baseUrl + "/updateToOffline";
+    public static String updateToOffline  = baseUrl + "/updateToOffline/";
     /** 启用 积分渠道 PUT
      *
      */
-    public static String updateToOnline = baseUrl + "/updateToOnline";
+    public static String updateToOnline = baseUrl + "/updateToOnline/";
 
 }
