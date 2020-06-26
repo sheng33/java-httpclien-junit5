@@ -1,5 +1,4 @@
-package com.sheng.hrt.until;
-
+package com.sheng.hrt.test;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -14,20 +13,20 @@ import org.junit.jupiter.api.extension.TestWatcher;
 import java.util.Optional;
 
 
-public class ExtentUtils implements TestWatcher , BeforeAllCallback, BeforeTestExecutionCallback {
-    static String reportPath = "reports/demo/index2.html";
+public class TestUtils implements TestWatcher, BeforeAllCallback,BeforeTestExecutionCallback {
+    static String reportPath = "reports/demo/test.html";
     private static ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(reportPath);
     private static ExtentReports extent = new ExtentReports();
     ExtentTest test;
     ExtentTest second;
     String childName;
-    public ExtentUtils() {
+    public TestUtils() {
         // 设置静态
         htmlReporter.config().setEncoding("UTF-8");
-        htmlReporter.config().setDocumentTitle("华润通api自动化测试报告");
-        htmlReporter.config().setReportName("自动化测试报告");
+        htmlReporter.config().setDocumentTitle("api自动化测试报告");
+        htmlReporter.config().setReportName("api自动化测试报告");
         htmlReporter.config().setTheme(Theme.STANDARD);
-//        htmlReporter.config().setCSS(".node.level-1  ul{ display:none;} .node.level-1.active ul{display:block;}");
+        htmlReporter.config().setCSS(".node.level-1  ul{ display:none;} .node.level-1.active ul{display:block;}");
         extent.attachReporter(htmlReporter);
         extent.setReportUsesManualConfiguration(true);
     }

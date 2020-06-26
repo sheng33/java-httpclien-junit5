@@ -23,9 +23,9 @@ public class ApplicationManage {
     protected Map<String,String> params = BaseManage.params;
 
     @DisplayName("获取单个应用信息")
-    @CsvSource({"1","2"})
-    @ParameterizedTest
-    public void getApp(String appId){
+    @CsvSource({"存在,1","不存在,2"})
+    @ParameterizedTest(name = "{0}")
+    public void getApp(String name,String appId){
         params.clear();
         params.put("appId",appId);
         JSONObject jsonObject = sendHttp.getHttp(ApplicationConfig.getApp,headers,params);
@@ -34,8 +34,8 @@ public class ApplicationManage {
     }
     @DisplayName("新增 应用")
     @CsvFileSource(resources = "/resources/应用数据.csv",numLinesToSkip = 1)
-    @Disabled
-    public void addApplication(String appCode,String appImg,String appName
+    @ParameterizedTest(name = "{0}")
+    public void addApplication(String name,String appCode,String appImg,String appName
             ,String appSubtitle,String appUrl,String sort,String judge){
         //excel表为空时，赋值空格 而不是null
         appCode = appCode!=null?appCode:"";
@@ -59,7 +59,8 @@ public class ApplicationManage {
     @DisplayName("修改 应用")
     @CsvFileSource(resources = "/resources/应用数据.csv",numLinesToSkip = 1)
     @Disabled
-    public void updateApplication(String appCode,String appImg,String appName
+    @ParameterizedTest(name = "{0}")
+    public void updateApplication(String name,String appCode,String appImg,String appName
             ,String appSubtitle,String appUrl,String sort,String judge){
         //excel表为空时，赋值空格 而不是null
         appCode = appCode!=null?appCode:"";
@@ -88,15 +89,15 @@ public class ApplicationManage {
         Assert.assertTrue(jsonObject.getBoolean("success"));
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "{0}")
     @CsvSource({
-            "1,8",
-            "1,10",
-            "2,10",
-            "0,0"
+            "可查1-8,1,8",
+            "可查1-10,10",
+            "无数据1-20,2,10",
+            "无数据0-0,0,0"
     })
     @DisplayName("分页 查询应用")
-    public void getlist(String Index,String pageSize){
+    public void getlist(String name,String Index,String pageSize){
         params.clear();
         //是否计算总数
         params.put("count","true");
@@ -111,7 +112,7 @@ public class ApplicationManage {
 
     @DisplayName("禁用 应用")
     @CsvSource({"469856733393719296,remark"})
-    @ParameterizedTest
+    @ParameterizedTest(name = "{0}")
     public void updateToOffine(String id,String remark){
         params.clear();
         params.put("appId",id);
@@ -123,7 +124,7 @@ public class ApplicationManage {
 
     @DisplayName("启用 应用")
     @CsvSource({"469856733393719296,remark2"})
-    @ParameterizedTest
+    @ParameterizedTest(name = "{0}")
     public void updateToOnline(String id,String remark){
         params.clear();
         params.put("appId",id);
@@ -135,7 +136,7 @@ public class ApplicationManage {
 
     @DisplayName("删除应用")
     @CsvSource({"469856733393719296,remark2"})
-    @ParameterizedTest
+    @ParameterizedTest(name = "{0}")
     public void delApps(String id,String remark){
         params.clear();
         params.put("appId",id);
