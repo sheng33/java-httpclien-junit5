@@ -9,6 +9,7 @@ import com.sheng.hrt.urlConfig.ThirdChannelConfig;
 import org.junit.Assert;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -25,19 +26,20 @@ public class ThirdChannelTest {
     protected Map<String,String> params = BaseManage.params;
 
     @DisplayName("获取单个三方渠道信息")
-    @CsvSource({"1","2"})
-    @ParameterizedTest
-    public void getThirdChannel(String channerId){
+    @CsvSource({"name,1","name,2"})
+    @ParameterizedTest(name = "{0}")
+    @Tag("获取元素")
+    public void getThirdChannel(String name,String channerId){
         params.clear();
         params.put("channelId",channerId);
         JSONObject jsonObject = sendHttp.getHttp(ThirdChannelConfig.GetThirdChannel,headers,params);
-        System.out.println(jsonObject);
         Assert.assertTrue(jsonObject.getBoolean("success"));
     }
     @DisplayName("新增 三分渠道")
     @CsvFileSource(resources = "/resources/三方渠道数据.csv",numLinesToSkip = 1)
-    @Disabled
-    public void addThirdChannel(String channelDailyThreshold,String channelDailyUserThreshold
+    @ParameterizedTest(name = "{0}")
+    @Tag("新增")
+    public void addThirdChannel(String name,String channelDailyThreshold,String channelDailyUserThreshold
             ,String channelName,String chargeRatio,String pointExchangeRate,String pointName,String judge){
         channelDailyThreshold = channelDailyThreshold!=null?channelDailyThreshold:"";
         channelDailyUserThreshold = channelDailyUserThreshold!=null?channelDailyUserThreshold:"";
@@ -60,8 +62,9 @@ public class ThirdChannelTest {
 
     @DisplayName("修改 三分渠道")
     @CsvFileSource(resources = "/resources/三方渠道数据.csv",numLinesToSkip = 1)
-    @Disabled
-    public void updateThirdChannel(String channelDailyThreshold,String channelDailyUserThreshold
+    @ParameterizedTest(name = "{0}")
+    @Tag("修改")
+    public void updateThirdChannel(String name,String channelDailyThreshold,String channelDailyUserThreshold
             ,String channelName,String chargeRatio,String pointExchangeRate,String pointName,String judge){
         channelDailyThreshold = channelDailyThreshold!=null?channelDailyThreshold:"";
         channelDailyUserThreshold = channelDailyUserThreshold!=null?channelDailyUserThreshold:"";
@@ -83,21 +86,22 @@ public class ThirdChannelTest {
 
     @DisplayName("状态下拉")
     @Test
+    @Tag("下拉列表")
     public void channelStates(){
         JSONObject jsonObject = sendHttp.getHttp(ThirdChannelConfig.channelStates,headers);
-        System.out.println(jsonObject);
         Assert.assertTrue(jsonObject.getBoolean("success"));
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "{0}")
     @CsvSource({
-            "1,8",
-            "1,10",
-            "2,10",
-            "0,0"
+            "name,1,8",
+            "name,1,10",
+            "name,2,10",
+            "name,0,0"
     })
     @DisplayName("分页 查询三方渠道")
-    public void getlist(String Index,String pageSize){
+    @Tag("分页接口")
+    public void getlist(String name,String Index,String pageSize){
         params.clear();
         //是否计算总数
         params.put("count","true");
@@ -111,26 +115,26 @@ public class ThirdChannelTest {
     }
 
     @DisplayName("禁用 三方渠道")
-    @CsvSource({"469856733393719296,remark"})
-    @ParameterizedTest
-    public void updateToOffine(String id,String remark){
+    @CsvSource({"name,469856733393719296,remark"})
+    @ParameterizedTest(name = "{0}")
+    @Tag("禁用启用")
+    public void updateToOffine(String name,String id,String remark){
         params.clear();
         params.put("channelId",id);
 //        params.put("remark",remark);
         JSONObject jsonObject = sendHttp.putHttplj(ThirdChannelConfig.updateToOffline,headers,params);
-        System.out.println(jsonObject);
         Assert.assertTrue(jsonObject.getBoolean("success"));
     }
 
     @DisplayName("启用 三方渠道")
-    @CsvSource({"469856733393719296,remark2"})
-    @ParameterizedTest
-    public void updateToOnline(String id,String remark){
+    @CsvSource({"name,469856733393719296,remark2"})
+    @ParameterizedTest(name = "{0}")
+    @Tag("禁用启用")
+    public void updateToOnline(String name,String id,String remark){
         params.clear();
         params.put("channelId",id);
 //        params.put("remark",remark);
         JSONObject jsonObject = sendHttp.putHttplj(ThirdChannelConfig.updateToOnline,headers,params);
-        System.out.println(jsonObject);
         Assert.assertTrue(jsonObject.getBoolean("success"));
     }
 

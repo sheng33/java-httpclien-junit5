@@ -1,5 +1,6 @@
 package com.sheng.hrt.test;
 
+import com.sheng.hrt.until.ExtentUtils;
 import org.junit.Assert;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -16,7 +17,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @DisplayName("测试类名")
-@ExtendWith(TestUtils.class)
+@ExtendWith(ExtentUtils.class)
 public class test {
     @DisplayName("测试成功方法")
 //    @TestTemplate

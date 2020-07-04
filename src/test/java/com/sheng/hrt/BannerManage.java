@@ -7,10 +7,7 @@ import com.sheng.hrt.until.ExtentUtils;
 import com.sheng.hrt.until.SendHttp;
 import com.sheng.hrt.urlConfig.BannerConfig;
 import org.junit.Assert;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
@@ -25,17 +22,17 @@ public class BannerManage {
     protected SendHttp sendHttp = new SendHttp();
     protected Map<String,String> headers = BaseManage.headers;
     protected Map<String,String> params = BaseManage.params;
-    private static String bannerId;
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "{0}")
     @CsvSource({
-            "1,8",
-            "1,10",
-            "2,10",
-            "0,0"
+            "可查(1-8),1,8",
+            "可查(1-10),1,10",
+            "无数据(2-10),2,10",
+            "无数据(0-0)0,0"
     })
     @DisplayName("查找Banner")
-    public void getlist(String Index,String pageSize){
+    @Tag("分页接口")
+    public void getlist(String name,String Index,String pageSize){
         params.clear();
         //是否计算总数
         params.put("count","true");
@@ -47,13 +44,15 @@ public class BannerManage {
         Assert.assertEquals(jsonObject.get("code"),200);
         jsonObject = jsonObject.getJSONObject("data");
         jsonObject = jsonObject.getJSONArray("rows").getJSONObject(0);
-        bannerId = jsonObject.getString("id");
+//        bannerId = jsonObject.getString("id"); //用于测试-删除Banner
+
     }
 
     @DisplayName("创建Banner")
-    @ParameterizedTest
+    @ParameterizedTest(name = "{0}")
     @CsvFileSource(resources = "/resources/Banner接口数据.csv",numLinesToSkip = 1)
-    public void addBanner(String type,String goalId,String bannerName,String bannerPic,String createTime,String id,String sort,String judge){
+    @Tag("新增")
+    public void addBanner(String name,String type,String goalId,String bannerName,String bannerPic,String createTime,String id,String sort,String judge){
         type = type!=null?type:"";
         goalId = goalId!=null?goalId:"";
         bannerName = bannerName!=null?bannerName:"";
@@ -73,15 +72,17 @@ public class BannerManage {
 
     @DisplayName("获取banner列表")
     @Test
+    @Tag("下拉列表")
     public void getBannerlist(){
         JSONObject jsonObject = sendHttp.getHttp(BannerConfig.types,headers);
         Assert.assertTrue(jsonObject.getBoolean("success"));
     }
 
     @DisplayName("下架Banner")
-    @CsvSource({"472497518299713536","472490190833848320"})
-    @ParameterizedTest
-    public void updateToOffine(String id){
+    @CsvSource({"下架Banner(存在),472497518299713536","下架Banner(不存在),472490190833848320"})
+    @ParameterizedTest(name = "{0}")
+    @Tag("上架下架")
+    public void updateToOffine(String name,String id){
         params.clear();
         params.put("bannerId",id);
         JSONObject jsonObject = sendHttp.putHttplj(BannerConfig.updateToOffline,headers,params);
@@ -89,9 +90,10 @@ public class BannerManage {
     }
 
     @DisplayName("上架Banner")
-    @CsvSource({"472497518299713536","472490190833848320"})
-    @ParameterizedTest
-    public void updateToOnline(String id){
+    @CsvSource({"上架Banner(存在),472497518299713536","上架Banner(不存在),472490190833848320"})
+    @ParameterizedTest(name = "{0}")
+    @Tag("上架下架")
+    public void updateToOnline(String name,String id){
         params.clear();
         params.put("bannerId",id);
         JSONObject jsonObject = sendHttp.putHttplj(BannerConfig.updateToOnline,headers,params);
@@ -100,8 +102,9 @@ public class BannerManage {
     }
 
     @DisplayName("删除Banner")
-    @Test
-    public void delBanner(){
+    @CsvSource({"删除Banner-存在,1","删除Banner-不存在,2"})
+    @Tag("删除")
+    public void delBanner(String name,String bannerId){
         params.clear();
         params.put("bannerId",bannerId);
         JSONObject jsonObject = sendHttp.getHttp(BannerConfig.delete,headers,params);

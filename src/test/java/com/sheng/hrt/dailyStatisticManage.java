@@ -9,6 +9,7 @@ import com.sheng.hrt.urlConfig.dailyStatisticConfig;
 import org.junit.Assert;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -24,34 +25,35 @@ public class dailyStatisticManage {
 
     @DisplayName("抽佣面板")
     @Test
+    @Tag("获取数据")
     public void testCommissionData(){
         JSONObject jsonObject = sendHttp.getHttp(dailyStatisticConfig.commissionData,headers);
-        System.out.println(jsonObject);
         Assert.assertTrue(jsonObject.getBoolean("success"));
     }
 
     @DisplayName("抽佣面板(根据时间区间查询按日数据)")
-    @CsvSource({",","1,2"})
-    @ParameterizedTest
-    public void testCommissionDataDaily(String startTime,String endTime){
+    @CsvSource({"name,,","name,1,2"})
+    @ParameterizedTest(name = "{0}")
+    @Tag("获取数据")
+    public void testCommissionDataDaily(String name,String startTime,String endTime){
         startTime = startTime!=null?startTime:"";
         endTime = endTime!=null?endTime:"";
         params.clear();
         params.put("queryStartTimeStamp",startTime);
         params.put("queryEndTimeStamp",endTime);
         JSONObject jsonObject = sendHttp.getHttp(dailyStatisticConfig.commissionDataDaily,headers,params);
-        System.out.println(jsonObject);
         Assert.assertTrue(jsonObject.getBoolean("success"));
     }
 
     @DisplayName("查询消耗数据面板")
     @CsvSource({
-            ",,"
-            ,"1,,"
-            ,",1,2"
+            "name,,,"
+            ,"name,1,,"
+            ,"name,,1,2"
     })
-    @ParameterizedTest
-    public void testConsumeBoardData(String pointCode,String queryStartTime,String queryEndTime){
+    @ParameterizedTest(name = "{0}")
+    @Tag("获取数据")
+    public void testConsumeBoardData(String name,String pointCode,String queryStartTime,String queryEndTime){
         pointCode = pointCode!=null?pointCode:"";
         queryStartTime = queryStartTime!=null?queryStartTime:"";
         queryEndTime = queryEndTime!=null?queryEndTime:"";
@@ -60,17 +62,17 @@ public class dailyStatisticManage {
         params.put("queryStartTimeStamp",queryStartTime);
         params.put("queryEndTimeStamp",queryEndTime);
         JSONObject jsonObject = sendHttp.getHttp(dailyStatisticConfig.consumeBoardData,headers,params);
-        System.out.println(jsonObject);
         Assert.assertTrue(jsonObject.getBoolean("success"));
     }
     @DisplayName("查询消耗数据面板(根据时间区间查询按日数据)")
     @CsvSource({
-            ",,"
-            ,"1,,"
-            ,",1,2"
+            "name,,,"
+            ,"name,1,,"
+            ,"name,,1,2"
     })
-    @ParameterizedTest
-    public void testConsumeBoardDataDaily(String pointCode,String queryStartTime,String queryEndTime){
+    @ParameterizedTest(name = "{0}")
+    @Tag("获取数据")
+    public void testConsumeBoardDataDaily(String name,String pointCode,String queryStartTime,String queryEndTime){
         pointCode = pointCode!=null?pointCode:"";
         queryStartTime = queryStartTime!=null?queryStartTime:"";
         queryEndTime = queryEndTime!=null?queryEndTime:"";
@@ -79,17 +81,17 @@ public class dailyStatisticManage {
         params.put("queryStartTimeStamp",queryStartTime);
         params.put("queryEndTimeStamp",queryEndTime);
         JSONObject jsonObject = sendHttp.getHttp(dailyStatisticConfig.consumeBoardDataDaily,headers,params);
-        System.out.println(jsonObject);
         Assert.assertTrue(jsonObject.getBoolean("success"));
     }
     @DisplayName("获取数据报表聚合数据")
     @CsvSource({
-            ","
-            ,"1,2"
-            ,"2,1"
+            "name,,"
+            ,"name,1,2"
+            ,"name,2,1"
     })
-    @ParameterizedTest
-    public void testData(String startTime,String endTime){
+    @ParameterizedTest(name = "{0}")
+    @Tag("获取数据")
+    public void testData(String name,String startTime,String endTime){
         startTime = startTime!=null?startTime:"";
         endTime = endTime!=null?endTime:"";
         params.clear();
@@ -100,13 +102,13 @@ public class dailyStatisticManage {
     }
     @DisplayName("导出数据报表,暂未完成文件接收请求")
     @CsvSource({
-            ","
-            ,"1,2"
-            ,"2,1"
+            "name,,"
+            ,"name,1,2"
+            ,"name,2,1"
     })
-    @ParameterizedTest
-    @Disabled
-    public void testExport(String startTime,String endTime){
+    @ParameterizedTest(name = "{0}")
+    @Tag("导出数据xls")
+    public void testExport(String name,String startTime,String endTime){
         startTime = startTime!=null?startTime:"";
         endTime = endTime!=null?endTime:"";
         params.clear();
@@ -117,6 +119,7 @@ public class dailyStatisticManage {
     }
     @DisplayName("服务费面板")
     @Test
+    @Tag("获取数据")
     public void testFeeData(){
         JSONObject jsonObject = sendHttp.getHttp(dailyStatisticConfig.feeData,headers);
         Assert.assertTrue(jsonObject.getBoolean("success"));
@@ -124,12 +127,13 @@ public class dailyStatisticManage {
 
     @DisplayName("服务费面板(根据时间区间查询按日数据)")
     @CsvSource({
-            ","
-            ,"1,2"
-            ,"2,1"
+            "name,,"
+            ,"name,1,2"
+            ,"name,2,1"
     })
-    @ParameterizedTest
-    public void testFeeDataDaily(String startTime,String endTime){
+    @ParameterizedTest(name = "{0}")
+    @Tag("获取数据")
+    public void testFeeDataDaily(String name,String startTime,String endTime){
         startTime = startTime!=null?startTime:"";
         endTime = endTime!=null?endTime:"";
         params.clear();
@@ -140,12 +144,13 @@ public class dailyStatisticManage {
     }
     @DisplayName("查询发放数据面板")
     @CsvSource({
-            ",,"
-            ,"1,,"
-            ,",1,2"
+            "name,,,"
+            ,"name,1,,"
+            ,"name,,1,2"
     })
-    @ParameterizedTest
-    public void testIssueBoardData(String pointCode,String queryStartTime,String queryEndTime){
+    @ParameterizedTest(name = "{0}")
+    @Tag("获取数据")
+    public void testIssueBoardData(String name,String pointCode,String queryStartTime,String queryEndTime){
         pointCode = pointCode!=null?pointCode:"";
         queryStartTime = queryStartTime!=null?queryStartTime:"";
         queryEndTime = queryEndTime!=null?queryEndTime:"";
@@ -158,12 +163,13 @@ public class dailyStatisticManage {
     }
     @DisplayName("查询发放数据面板(根据时间区间查询按日数据)")
     @CsvSource({
-            ",,"
-            ,"1,,"
-            ,",1,2"
+            "name,,,"
+            ,"name,1,,"
+            ,"name,,1,2"
     })
-    @ParameterizedTest
-    public void testIssueBoardDataDaily(String pointCode,String queryStartTime,String queryEndTime){
+    @ParameterizedTest(name = "{0}")
+    @Tag("获取数据")
+    public void testIssueBoardDataDaily(String name,String pointCode,String queryStartTime,String queryEndTime){
         pointCode = pointCode!=null?pointCode:"";
         queryStartTime = queryStartTime!=null?queryStartTime:"";
         queryEndTime = queryEndTime!=null?queryEndTime:"";
@@ -175,17 +181,18 @@ public class dailyStatisticManage {
         Assert.assertTrue(jsonObject.getBoolean("success"));
     }
 
-    @ParameterizedTest
     @CsvSource({
-            "false,,,,",
-            ",,,,",
-            "true,1,10,,",
-            "true,,0,1,",
-            "true,,,,",
-            "true,0,0,0,0,0"
+            "name,false,,,,",
+            "name,,,,,",
+            "name,true,1,10,,",
+            "name,true,,0,1,",
+            "name,true,,,,",
+            "name,true,0,0,0,0,0"
     })
+    @ParameterizedTest(name = "{0}")
     @DisplayName("分页 查询应用")
-    public void getPages(String count,String Index,String pageSize,String startTime,String endTime){
+    @Tag("获取数据")
+    public void getPages(String name,String count,String Index,String pageSize,String startTime,String endTime){
         count = count!=null?count:"";
         Index = Index!=null?Index:"";
         pageSize = pageSize!=null?pageSize:"";
@@ -201,7 +208,6 @@ public class dailyStatisticManage {
         params.put("queryStartTimeStamp",startTime);
         params.put("queryEndTimeStamp",endTime);
         JSONObject jsonObject = sendHttp.getHttp(dailyStatisticConfig.pages,headers,params);
-        System.out.println(jsonObject);
         Assert.assertEquals(jsonObject.get("code"),200);
         Assert.assertTrue(jsonObject.getBoolean("success"));
     }

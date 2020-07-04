@@ -6,6 +6,7 @@ import com.sheng.hrt.until.SendHttp;
 import com.sheng.hrt.urlConfig.ChannelRecordsConfig;
 import org.junit.Assert;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -19,9 +20,10 @@ public class ChannelRecordsManage {
     protected Map<String,String> params = BaseManage.params;
 
     @DisplayName("获取发放渠道记录")
-    @CsvSource({",,,,,,"})
-    @ParameterizedTest
-    public void getChannelRecords(String billType,String channelName,String count
+    @CsvSource({",,,,,,,"})
+    @ParameterizedTest(name = "{0}")
+    @Tag("下拉列表")
+    public void getChannelRecords(String name,String billType,String channelName,String count
             ,String pageIndex,String pageSize,String queryEndTimeStamp,String queryStartTimeStamp){
         billType = billType!=null?billType:"";
         channelName = channelName!=null?channelName:"";
@@ -44,9 +46,10 @@ public class ChannelRecordsManage {
     }
 
     @DisplayName("获取抽佣记录")
-    @CsvSource({",,,,,"})
-    @ParameterizedTest
-    public void getCommissionRecords(String appName,String count
+    @CsvSource({",,,,,,"})
+    @ParameterizedTest(name = "{0}")
+    @Tag("获取元素")
+    public void getCommissionRecords(String name,String appName,String count
             ,String pageIndex,String pageSize,String queryEndTimeStamp,String queryStartTimeStamp){
         appName = appName!=null?appName:"";
         count = count!=null?count:"";
@@ -66,9 +69,10 @@ public class ChannelRecordsManage {
         Assert.assertTrue(jsonObject.getBoolean("success"));
     }
     @DisplayName("获取积分记录")
-    @CsvSource({",,,,,,,,"})
-    @ParameterizedTest
-    public void getPointRecords(String billType,String count,String firstChargeMark
+    @CsvSource({",,,,,,,,,"})
+    @ParameterizedTest(name = "{0}")
+    @Tag("获取元素")
+    public void getPointRecords(String name,String billType,String count,String firstChargeMark
             ,String pageIndex,String pageSize,String pointCode,String queryEndTimeStamp
             ,String queryStartTimeStamp,String userId){
         billType = billType!=null?billType:"";
@@ -91,13 +95,13 @@ public class ChannelRecordsManage {
         params.put("queryStartTimeStamp",queryStartTimeStamp);
         params.put("userId",userId);
         JSONObject jsonObject = sendHttp.getHttp(ChannelRecordsConfig.pointRecords,headers,params);
-        System.out.println(jsonObject);
         Assert.assertTrue(jsonObject.getBoolean("success"));
     }
     @DisplayName("获取回兑记录")
-    @CsvSource({",,,,,,"})
-    @ParameterizedTest
-    public void getReExchangeRecords(String count
+    @CsvSource({",,,,,,,"})
+    @ParameterizedTest(name = "{0}")
+    @Tag("获取元素")
+    public void getReExchangeRecords(String name,String count
             ,String pageIndex,String pageSize,String queryEndTimeStamp
             ,String queryStartTimeStamp,String targetPointName,String userId){
         count = count!=null?count:"";
@@ -116,7 +120,6 @@ public class ChannelRecordsManage {
         params.put("targetPointName",targetPointName);
         params.put("userId",userId);
         JSONObject jsonObject = sendHttp.getHttp(ChannelRecordsConfig.reExchangeRecords,headers,params);
-        System.out.println(jsonObject);
         Assert.assertTrue(jsonObject.getBoolean("success"));
     }
 }

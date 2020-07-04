@@ -7,6 +7,7 @@ import com.sheng.hrt.urlConfig.BaseUrlConfig;
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -21,14 +22,16 @@ public class BaseManage {
     protected static Map<String,String> params = new HashMap<>();
     protected static SendHttp sendHttp = new SendHttp();;
     @BeforeAll
+    @DisplayName("权限授权")
+    @Tag("登录")
     public static void init(){
         headers.put("authorization","");
     }
 
     @DisplayName("文件上传")
-    @CsvSource({"1","2"})
-    @ParameterizedTest
-    public void uploadFile(String imgPath){
+    @CsvSource({"1,1","2,2"})
+    @ParameterizedTest(name = "{0}")
+    public void uploadFile(String name,String imgPath){
         File file = new File(imgPath);
         JSONObject jsonObject = sendHttp.postHttp(BaseUrlConfig.upload,headers,file);
         Assert.assertTrue(jsonObject.getBoolean("success"));
