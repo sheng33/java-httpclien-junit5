@@ -91,25 +91,25 @@ public class ChannelManage {
         Assert.assertTrue(jsonObject.getBoolean("success"));
     }
     @DisplayName("禁用 积分渠道")
-    @CsvSource({"禁用积分渠道（存在）,469856733393719296,remark"})
+    @CsvSource({"禁用积分渠道（存在）,469856733393719296,true","禁用积分渠道（不存在）,123,true"})
     @ParameterizedTest(name = "{0}")
     @Tag("禁用启用")
-    public void updateToOffine(String name,String id,String remark){
+    public void updateToOffine(String name,String id,Boolean remark){
         params.clear();
         JSONObject jsonObject = sendHttp.putHttp(ChannelUrlConfig.updateToOffline,headers,id);
-        Assert.assertTrue(jsonObject.getBoolean("success"));
+        Assert.assertEquals(jsonObject.getBoolean("success"),remark);
     }
 
     @DisplayName("启用 积分渠道")
-    @CsvSource({"启用积分渠道,469856733393719296,remark2"})
+    @CsvSource({"启用积分渠道,469856733393719296,remark2","启用积分渠道（存在）,469856733393719296,true"})
     @ParameterizedTest(name = "{0}")
     @Tag("禁用启用")
-    public void updateToOnline(String name,String id,String remark){
+    public void updateToOnline(String name,String id,Boolean remark){
         params.clear();
         params.put("channelId",id);
-        params.put("remark",remark);
+//        params.put("remark",remark);
         JSONObject jsonObject = sendHttp.putHttp(ChannelUrlConfig.updateToOnline,headers,id,params);
-        Assert.assertTrue(jsonObject.getBoolean("success"));
+        Assert.assertEquals(jsonObject.getBoolean("success"),remark);
     }
 
 }

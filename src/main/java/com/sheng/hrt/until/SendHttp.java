@@ -78,6 +78,7 @@ public class SendHttp {
         for(String value : params.values()){
             baseUrl.append(value);
         }
+        System.out.println(baseUrl);
         HttpRequest httpRequest = HttpRequest
                 .put(baseUrl.toString())
                 .headers(headers)

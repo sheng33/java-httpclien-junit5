@@ -23,7 +23,7 @@ public class ApplicationManage {
     protected Map<String,String> params = BaseManage.params;
 
     @DisplayName("获取单个应用信息")
-    @CsvSource({"存在,1","不存在,2"})
+    @CsvSource({"存在,473213539499249664","不存在,21"})
     @ParameterizedTest(name = "{0}")
     @Tag("获取元素")
     public void getApp(String name,String appId){
@@ -55,7 +55,7 @@ public class ApplicationManage {
                 "\"sort\": \""+sort+"\"" +
                 "}";
         JSONObject jsonObject = sendHttp.postHttp(ApplicationConfig.addApp,headers,param);
-        Assert.assertEquals(jsonObject.getString("success"),judge);
+        Assert.assertEquals(jsonObject.getString("success"),judge.toUpperCase());
     }
 
     @DisplayName("修改 应用")
@@ -80,7 +80,7 @@ public class ApplicationManage {
                 "\"sort\": \""+sort+"\"" +
                 "}";
         JSONObject jsonObject = sendHttp.postHttp(ApplicationConfig.updateApp,headers,param);
-        Assert.assertEquals(jsonObject.getString("success"),judge);
+        Assert.assertEquals(jsonObject.getString("success"),judge.toUpperCase());
     }
 
     @DisplayName("状态下拉")
@@ -122,43 +122,41 @@ public class ApplicationManage {
     }
 
     @DisplayName("禁用 应用")
-    @CsvSource({"禁用应用（存在）,469856733393719296,remark"
-            ,"禁用应用（不存在),123456,faild"})
+    @CsvSource({"禁用应用（存在）,472811414235516928,true"
+            ,"禁用应用（不存在),123456,false"})
     @ParameterizedTest(name = "{0}")
     @Tag("禁用启用-应用")
-    public void updateToOffine(String name,String id,String remark){
+    public void updateToOffine(String name,String id,Boolean status){
         params.clear();
         params.put("appId",id);
-//        params.put("remark",remark);
         JSONObject jsonObject = sendHttp.putHttplj(ApplicationConfig.updateToOffine,headers,params);
         System.out.println(jsonObject);
-        Assert.assertTrue(jsonObject.getBoolean("success"));
+        Assert.assertEquals(jsonObject.getBoolean("success"),status);
     }
 
     @DisplayName("启用 应用")
-    @CsvSource({"启用应用(存在),469856733393719296,remark2"
-            ,"启用应用(不存在),123,remark2"})
+    @CsvSource({"启用应用(存在),472811414235516928,true"
+            ,"启用应用(不存在),123,false"})
     @ParameterizedTest(name = "{0}")
     @Tag("禁用启用")
-    public void updateToOnline(String name,String id,String remark){
+    public void updateToOnline(String name,String id,Boolean status){
         params.clear();
         params.put("appId",id);
-//        params.put("remark",remark);
         JSONObject jsonObject = sendHttp.putHttplj(ApplicationConfig.updateToOnline,headers,params);
         System.out.println(jsonObject);
-        Assert.assertTrue(jsonObject.getBoolean("success"));
+        Assert.assertEquals(jsonObject.getBoolean("success"),status);
     }
 
     @DisplayName("删除应用")
-    @CsvSource({"删除应用(存在),469856733393719296,remark2"
-            ,"删除应用(不存在),123,remark2"})
+    @CsvSource({"删除应用(存在),469856733393719296,true"
+            ,"删除应用(不存在),123,false"})
     @ParameterizedTest(name = "{0}")
     @Tag("删除")
-    public void delApps(String name,String id,String remark){
+    public void delApps(String name,String id,Boolean status){
         params.clear();
         params.put("appId",id);
         JSONObject jsonObject = sendHttp.deleteHttp(ApplicationConfig.delApp,headers,params);
-        Assert.assertTrue(jsonObject.getBoolean("success"));
+        Assert.assertEquals(jsonObject.getBoolean("success"),status);
     }
 
 }

@@ -49,7 +49,7 @@ public class PointManage {
                 "\t\"pointName\": \""+pointName+"\"\n" +
                 "}";
         JSONObject jsonObject = sendHttp.postHttp(PointUrlConfig.addPoint,headers,parm);
-        Assert.assertEquals(jsonObject.getString("success"),judge);
+        Assert.assertEquals(jsonObject.getString("success"),judge.toUpperCase());
     }
     @DisplayName("修改积分")
     @CsvFileSource(resources = "/resources/积分表数据.csv",numLinesToSkip = 1)
@@ -67,7 +67,7 @@ public class PointManage {
                 "\t\"pointName\": \""+pointName+"\"\n" +
                 "}";
         JSONObject jsonObject = sendHttp.putHttp(PointUrlConfig.updataPoint,headers,parm);
-        Assert.assertEquals(jsonObject.getString("success"),judge);
+        Assert.assertEquals(jsonObject.getString("success"),judge.toUpperCase());
     }
 
     @ParameterizedTest(name = "{0}")

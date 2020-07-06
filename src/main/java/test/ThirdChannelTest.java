@@ -55,7 +55,7 @@ public class ThirdChannelTest {
                 "\"pointName\": \""+pointName+"\"" +
                 "}";
         JSONObject jsonObject = sendHttp.postHttp(ThirdChannelConfig.GetThirdChannel,headers,param);
-        Assert.assertEquals(jsonObject.getString("success"),judge);
+        Assert.assertEquals(jsonObject.getString("success"),judge.toUpperCase());
     }
 
     @DisplayName("修改 三分渠道")
@@ -79,7 +79,7 @@ public class ThirdChannelTest {
                 "\"pointName\": \""+pointName+"\"" +
                 "}";
         JSONObject jsonObject = sendHttp.postHttp(ThirdChannelConfig.GetThirdChannel,headers,param);
-        Assert.assertEquals(jsonObject.getString("success"),judge);
+        Assert.assertEquals(jsonObject.getString("success"),judge.toUpperCase());
     }
 
     @DisplayName("状态下拉")
@@ -113,27 +113,27 @@ public class ThirdChannelTest {
     }
 
     @DisplayName("禁用 三方渠道")
-    @CsvSource({"name,469856733393719296,remark"})
+    @CsvSource({"存在,469856733393719296,true","不存在,123,false"})
     @ParameterizedTest(name = "{0}")
     @Tag("禁用启用")
-    public void updateToOffine(String name,String id,String remark){
+    public void updateToOffine(String name,String id,boolean remark){
         params.clear();
         params.put("channelId",id);
 //        params.put("remark",remark);
         JSONObject jsonObject = sendHttp.putHttplj(ThirdChannelConfig.updateToOffline,headers,params);
-        Assert.assertTrue(jsonObject.getBoolean("success"));
+        Assert.assertEquals(jsonObject.getBoolean("success"),remark);
     }
 
     @DisplayName("启用 三方渠道")
-    @CsvSource({"name,469856733393719296,remark2"})
+    @CsvSource({"存在,469856733393719296,true","不存在,123,false"})
     @ParameterizedTest(name = "{0}")
     @Tag("禁用启用")
-    public void updateToOnline(String name,String id,String remark){
+    public void updateToOnline(String name,String id,boolean remark){
         params.clear();
         params.put("channelId",id);
 //        params.put("remark",remark);
         JSONObject jsonObject = sendHttp.putHttplj(ThirdChannelConfig.updateToOnline,headers,params);
-        Assert.assertTrue(jsonObject.getBoolean("success"));
+        Assert.assertEquals(jsonObject.getBoolean("success"),remark);
     }
 
 }

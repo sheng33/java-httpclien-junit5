@@ -30,7 +30,7 @@ public class BaseManage {
     }
 
     @DisplayName("文件上传")
-    @CsvSource({"1,1","2,2"})
+    @CsvSource({"正常大小文件,1","超过限制文件,2"})
     @ParameterizedTest(name = "{0}")
     public void uploadFile(String name,String imgPath){
         File file = new File(imgPath);

@@ -7,7 +7,7 @@ public class ApplicationConfig {
     /** 应用管理
      *
      */
-    public static String baseUrl = BaseUrlConfig.baseUrl+"/manage/application";
+    public static String baseUrl = BaseUrlConfig.baseUrl+"manage/application";
     /** 获取单个用户 GET
      *
      */
@@ -36,11 +36,11 @@ public class ApplicationConfig {
     /** 下架应用 PUT
      *
      */
-    public static String updateToOffine = baseUrl + "/updataToOffine";
+    public static String updateToOffine = baseUrl + "/updateToOffline/";
     /** 上架应用 PUT
      *
      */
-    public static String updateToOnline = baseUrl + "/updataToOnline";
+    public static String updateToOnline = baseUrl + "/updateToOnline/";
 
 
 
