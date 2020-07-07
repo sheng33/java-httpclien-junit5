@@ -55,7 +55,7 @@ public class ThirdChannelTest {
                 "\"pointName\": \""+pointName+"\"" +
                 "}";
         JSONObject jsonObject = sendHttp.postHttp(ThirdChannelConfig.GetThirdChannel,headers,param);
-        Assert.assertEquals(jsonObject.getString("success"),judge.toUpperCase());
+        Assert.assertEquals(jsonObject.getString("success"),judge.toLowerCase());
     }
 
     @DisplayName("修改 三分渠道")
@@ -79,7 +79,7 @@ public class ThirdChannelTest {
                 "\"pointName\": \""+pointName+"\"" +
                 "}";
         JSONObject jsonObject = sendHttp.postHttp(ThirdChannelConfig.GetThirdChannel,headers,param);
-        Assert.assertEquals(jsonObject.getString("success"),judge.toUpperCase());
+        Assert.assertEquals(jsonObject.getString("success"),judge.toLowerCase());
     }
 
     @DisplayName("状态下拉")

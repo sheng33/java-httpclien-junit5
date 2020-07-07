@@ -38,7 +38,7 @@ public class ChannelManage {
     @CsvFileSource(resources = "/resources/渠道表数据.csv",numLinesToSkip = 1)
     @ParameterizedTest(name = "{0}")
     @Tag("新增")
-    public void addChannel(String name,Boolean judge){
+    public void addChannel(String name,boolean judge){
         JSONObject jsonObject = sendHttp.getHttp(ChannelUrlConfig.addChannel,headers,params);
         Assert.assertEquals(jsonObject.getBoolean("success"),judge);
     }
@@ -47,7 +47,7 @@ public class ChannelManage {
     @CsvFileSource(resources = "/resources/渠道表数据.csv",numLinesToSkip = 1)
     @ParameterizedTest(name = "{0}")
     @Tag("修改")
-    public void updateChannel(String name,Boolean judge){
+    public void updateChannel(String name,boolean judge){
         JSONObject jsonObject = sendHttp.getHttp(ChannelUrlConfig.updataChannel,headers,params);
         Assert.assertEquals(jsonObject.getBoolean("success"),judge);
     }
@@ -107,7 +107,7 @@ public class ChannelManage {
     public void updateToOnline(String name,String id,Boolean remark){
         params.clear();
         params.put("channelId",id);
-//        params.put("remark",remark);
+        params.put("remark",remark.toString());
         JSONObject jsonObject = sendHttp.putHttp(ChannelUrlConfig.updateToOnline,headers,id,params);
         Assert.assertEquals(jsonObject.getBoolean("success"),remark);
     }
