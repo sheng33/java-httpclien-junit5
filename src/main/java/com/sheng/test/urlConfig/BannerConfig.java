@@ -1,6 +1,4 @@
-package com.sheng.hrt.urlConfig;
-
-import com.github.pagehelper.util.BaseSqlUtil;
+package com.sheng.test.urlConfig;
 
 /** banner管理Url配置表
  *

@@ -1,4 +1,4 @@
-package com.sheng.hrt.urlConfig;
+package com.sheng.test.urlConfig;
 
 
 /** 渠道表Url配置表

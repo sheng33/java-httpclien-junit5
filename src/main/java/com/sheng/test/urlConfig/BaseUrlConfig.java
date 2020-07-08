@@ -1,4 +1,4 @@
-package com.sheng.hrt.urlConfig;
+package com.sheng.test.urlConfig;
 
 /** 三方认证Url配置表
  *

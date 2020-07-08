@@ -1,9 +1,9 @@
-package test;
+package com.sheng.test.junitTest;
 
 import com.alibaba.fastjson.JSONObject;
-import com.sheng.hrt.until.ExtentUtils;
-import com.sheng.hrt.until.SendHttp;
-import com.sheng.hrt.urlConfig.PointUrlConfig;
+import com.sheng.test.until.ExtentUtils;
+import com.sheng.test.until.SendHttp;
+import com.sheng.test.urlConfig.PointUrlConfig;
 import org.junit.Assert;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;

@@ -1,4 +1,4 @@
-package com.sheng.hrt.until;
+package com.sheng.test.until;
 
 public class Constants {
     static final String RTN_CODE_SUCCESS = "200";
