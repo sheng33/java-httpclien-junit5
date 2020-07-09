@@ -31,6 +31,6 @@ public class ApplicationManage {
 
 效果图：
 
-![图片名称](https://github.com/sheng33/java-httpclien-junit5-/blob/home/%E6%8A%A5%E5%91%8A%E5%9B%BE%E7%89%87/1.png) 
-![图片名称](https://github.com/sheng33/java-httpclien-junit5-/blob/home/%E6%8A%A5%E5%91%8A%E5%9B%BE%E7%89%87/2.png) 
-![图片名称](https://github.com/sheng33/java-httpclien-junit5-/blob/home/%E6%8A%A5%E5%91%8A%E5%9B%BE%E7%89%87/3.png) 
+![图片名称1](报告图片/1.png) 
+![图片名称2](报告图片/2.png) 
+![图片名称3](报告图片/3.png) 
