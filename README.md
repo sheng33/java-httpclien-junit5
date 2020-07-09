@@ -1,5 +1,5 @@
-##  帮助文档
-此次接口测试采用httpclient+junit5+fastjson
+##  接口测试 帮助文档
+此次接口测试采用httpclient+junit5+fastjson+extentreports
 
 通过读取resources-接口测试数据包中csv文件参数化数据
 
