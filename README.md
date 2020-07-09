@@ -30,7 +30,9 @@ public class ApplicationManage {
 ```
 
 效果图：
-
+1
 ![图片名称1](https://sheng33.github.io/sheng.github.io/1.png) 
+2
 ![图片名称2](https://sheng33.github.io/sheng.github.io/2.png) 
+3
 ![图片名称3](https://sheng33.github.io/sheng.github.io/3.png) 
