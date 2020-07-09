@@ -34,3 +34,4 @@ public class ApplicationManage {
 ![图片名称1](报告图片/1.png) 
 ![图片名称2](报告图片/2.png) 
 ![图片名称3](报告图片/3.png) 
+![11](https://cjy513203427.github.io/img/2019-06-20-Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E8%BF%9B%E7%A8%8B/%E8%BF%9B%E7%A8%8B.png)
